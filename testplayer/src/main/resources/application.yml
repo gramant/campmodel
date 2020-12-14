@@ -1,3 +1,0 @@
-app:
-  baseUrl: https://vast-filter.gramant.ru
-  directory-for-vast-file: /tmp/vast_file/
