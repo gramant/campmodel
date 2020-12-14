@@ -1,12 +1,10 @@
 app:
   allowedOrigins: http://localhost:4200
   baseUrl: http://localhost:8080
-  vast-dir: /tmp/vast_file/
-
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:54321/sitefilter
-    username: sitefilter_admin
+    url: jdbc:postgresql://localhost:54321/campmodel
+    username: campmodel_admin
     password: password
     driver-class-name: org.postgresql.Driver
 

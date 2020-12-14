@@ -4,12 +4,7 @@ server:
 
 spring:
   application:
-    name: sitefilter
-#  mvc:
-#    static-path-pattern: /files/static/**
-#    throw-exception-if-no-handler-found: true
-#    async:
-#      request-timeout: 60s
+    name: campmodel
 
   liquibase:
     enabled: true
@@ -17,8 +12,8 @@ spring:
     default-schema: public
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/sitefilter
-    username: sitefilter_admin
+    url: jdbc:postgresql://localhost:5432/campmodel
+    username: campmodel_admin
     password: password
     driver-class-name: org.postgresql.Driver
   jooq:
@@ -38,25 +33,9 @@ spring:
 #      add-mappings: false
 #      static-locations: classpath:/static/
 
-
-app:
-  allowedOrigins: http://sitefilter.gramant.ru,https://sitefilter.gramant.ru
-  baseUrl: https://sitefilter.gramant.ru
-  ad-impression-url: '${app.baseUrl}/ads/views'
-  ad-check-before-load-wrong-size-url: '${app.baseUrl}/ads/views'
-  vast-dir: /opt/sitefilter/vast/
-
-clickhouse:
-  driverClassName: ru.yandex.clickhouse.ClickHouseDriver
-  url: jdbc:clickhouse://127.0.0.1:8123/default
-  initialSize: 10
-  maxActive: 100
-  minIdle: 10
-  maxWait: 6000
-
 logging:
   file:
-    path: /var/log/sitefilter
+    path: /var/log/campmodel
     max-history: 7
     max-size: 50MB
     total-size-cap: 500MB
@@ -66,5 +45,5 @@ logging:
     file: '%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n'
   level:
     org.jooq: DEBUG
-    com.gramant.sitefilter: DEBUG
+    com.gramant.camphouse: DEBUG
 
