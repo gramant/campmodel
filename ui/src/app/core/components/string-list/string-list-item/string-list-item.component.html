@@ -1,0 +1,16 @@
+<form class="form-horizontal row p-1" [formGroup]="expenseItemForm">
+
+    <div class="col-1 d-flex align-items-center justify-content-center">
+        {{number + 1}}
+    </div>
+    <div class="col-5">
+        <app-input-form-field formControlName="name"
+                              (ngModelChange)="onChangeValue($event)"></app-input-form-field>
+    </div>
+
+    <div class="col-1 d-flex align-items-center justify-content-center">
+        <i class="fa fa-trash cursor-pointer text-danger"
+           (click)="openDeleteOrganizer()"></i>
+    </div>
+
+</form>

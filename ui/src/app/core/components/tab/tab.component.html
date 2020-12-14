@@ -1,0 +1,5 @@
+<div class="tab-pane" [ngClass]="{'active': active | async,
+                                  'non-active': !(active | async)}" >
+    {{active}}
+<ng-content></ng-content>
+</div>

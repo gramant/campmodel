@@ -1,0 +1,74 @@
+#                                    __   __  __
+#                                    \ \ / / / /
+#                                     \ V / / /
+#                                      \_/  \/
+#
+#                                    V E C T O R
+#                                   Configuration
+#
+# ------------------------------------------------------------------------------
+# Website: https://vector.dev
+# Docs: https://vector.dev/docs/
+# ------------------------------------------------------------------------------
+
+# Note: A full config spec is located at ./vector.spec.toml and examples
+#       in the ./examples folder.
+
+data_dir = "/var/lib/vector"
+
+# Input data. Change me to a valid input source.
+[sources.in]
+  include = ["/var/log/nginx/tmpfs/vast.log"]
+  type = "file"
+  # Fingerprinting
+  fingerprinting.fingerprint_bytes = 100
+  fingerprinting.ignored_header_bytes = 0
+  fingerprinting.strategy = "checksum"
+
+# Transformations
+[transforms.nginx_parser]
+  inputs = ["in"]
+  type = "regex_parser"
+  field = "message"
+  patterns = ['^(?P<host>[\w\.]+) - (?P<user>[^ ]+) \[(?P<timestamp>.*)\] "(?P<method>[\w]+) (?P<path>[^ ]+) (?P<proto>[^ ]+)" (?P<status>[\d]+) (?P<bytes_out>[\d]+) "(?P<referer>[^"]+)" "(?P<agent>[^"]+)" "(?P<forwarded>[^"]+)"$']
+
+[transforms.coercer]
+  type = "coercer"
+  inputs = ["nginx_parser"]
+  types.timestamp = "timestamp"
+
+# Output data
+[sinks.out]
+  host = "http://localhost:8123"
+  inputs = ["coercer"]
+  table = "nginx_log"
+  type = "clickhouse"
+  encoding.only_fields = ["host", "user", "bytes_in", "timestamp", "method", "path", "status", "bytes_out", "referer", "agent", "forwarded"]
+  encoding.timestamp_format = "unix"
+  buffer.max_events = 100000
+  buffer.timeout_sec = 1
+  buffer.type = "memory"
+  batch.max_events = 25000
+  batch.timeout_sec = 1
+
+# Tests
+[[tests]]
+  name = "test nginx regex"
+
+  [[tests.inputs]]
+    insert_at = "nginx_parser"
+    type = "raw"
+    value = "127.0.0.1 - - [2020-11-11T17:36:31+03:00] \"GET / HTTP/1.1\" 200 612 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36\" \"-\""
+
+  [[tests.outputs]]
+    extract_from = "nginx_parser"
+    [[tests.outputs.conditions]]
+      type = "check_fields"
+      "method.eq" = "GET"
+      "host.eq" = "127.0.0.1"
+      "timestamp.eq" = "2020-11-11T17:36:31+03:00"
+      "path.eq" = "/"
+      "status.eq" = "200"
+      "agent.eq" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36"
+      "referer.eq" = "-"
+      "forwarded.eq" = "-"

@@ -1,0 +1,18 @@
+<div class="checkbox c-checkbox" *ngFor="let checkElement of values">
+    <label>
+        <input type="checkbox" [(ngModel)]="checkElement.isChecked">
+        <span class="fa fa-check"></span>{{checkElement.titleKey}}</label>
+</div>
+<div class="invalid-feedback" *ngIf="control.invalid && control.touched">
+    <span class="text-danger" *ngIf="control.errors.required" translate>Required field</span>
+</div>
+
+<div class="invalid-feedback-non-form" *ngIf="control.invalid">
+    <ng-container *ngIf="control.touched">
+        <span class="text-danger" *ngIf="control.errors.required" translate>Required field</span>
+    </ng-container>
+
+    <ng-container>
+        <span class="text-danger" *ngIf="control.errors.maxlength" translate>Maximum number of characters exceeded</span>
+    </ng-container>
+</div>

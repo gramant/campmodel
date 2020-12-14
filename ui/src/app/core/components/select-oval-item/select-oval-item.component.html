@@ -1,0 +1,16 @@
+<button *ngFor="let item of itemsForSelect"
+        type="button" class="btn btn-oval m-2"
+        [class.btn-secondary]="value !== getValue(item)"
+        [class.btn-success]="value === getValue(item)"
+        (click)="onChangeValue(item)">
+                            <span *ngIf="value === getValue(item)">
+                                <i class="fa fa-check"></i>&nbsp;&nbsp;
+                            </span>
+    {{getTitle(item)}}
+</button>
+
+<div class="invalid-feedback-non-form" *ngIf="control && control.invalid">
+    <ng-container *ngIf="control.touched && control.invalid">
+        <span class="text-danger" *ngIf="control.errors.required" translate>Required field</span>
+    </ng-container>
+</div>

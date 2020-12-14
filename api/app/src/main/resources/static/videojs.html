@@ -1,0 +1,62 @@
+<html>
+<head>
+    <!-- videojs must be included first -->
+    <link rel="stylesheet" href="https://vjs.zencdn.net/5.9.2/video-js.css">
+    <script type="text/javascript" src="https://vjs.zencdn.net/5.9.2/video.js"></script>
+
+    <!-- videojs-vast-vpaid -->
+    <link href="https://cdn.rawgit.com/MailOnline/videojs-vast-vpaid/master/bin/videojs.vast.vpaid.min.css" rel="stylesheet">
+    <script src="https://cdn.rawgit.com/MailOnline/videojs-vast-vpaid/master/bin/videojs_5.vast.vpaid.min.js"></script>
+
+    <!-- viblast -->
+    <script src="https://cdn.viblast.com/vb/stable/viblast.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/openplayerjs@latest/dist/openplayer.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/openplayerjs@latest/dist/openplayer.js"></script>
+</head>
+
+<body>
+
+<h4>With tag <b><a href="https://ads.adfox.ru/357578/getCode?p1=clwnm&p2=gxkz&puid1=">
+    https://ads.adfox.ru/357578/getCode?p1=clwnm&p2=gxkz&puid1=
+</a></b></h4>
+
+<video id="vid1" class="video-js vjs-default-skin vjs-big-play-centered" controls
+       data-setup='{
+            "plugins": {
+                    "vastClient": {
+                    "adTagUrl": "https://sitefilter.gramant.ru/ads/vast/fox-test/vast.xml",
+                    "adsCancelTimeout": 3000,
+                    "adsEnabled": true,
+                    "preferredTech":"html5"
+                }
+            }}'
+       width='640'
+       height='400'
+       data-viblast-key="N8FjNTQ3NDdhZqZhNGI5NWU5ZTI=">
+
+    <!--    <source src="//cdn3.viblast.com/streams/hls/airshow/playlist.m3u8" type='application/x-mpegURL'>-->
+    <source src="https://sitefilter.gramant.ru/static/test-video.mp4" type='video/mp4'>
+</video>
+
+<h4>With tag <b><a href="https://sitefilter.gramant.ru/static/original-vast2.xml">
+    https://sitefilter.gramant.ru/static/original-vast2.xml
+</a></b></h4> (test 16)
+
+<video id="vid2" class="video-js vjs-default-skin vjs-big-play-centered" controls
+       data-setup='{
+            "plugins": {
+                    "vastClient": {
+                    "adTagUrl": "https://sitefilter.gramant.ru/ads/vast/test-16/vast.xml?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=",
+                    "adsCancelTimeout": 3000,
+                    "adsEnabled": true,
+                    "preferredTech":"html5"
+                }
+            }}'
+       width='640'
+       height='400'
+       data-viblast-key="N8FjNTQ3NDdhZqZhNGI5NWU5ZTI=">
+
+    <!--    <source src="//cdn3.viblast.com/streams/hls/airshow/playlist.m3u8" type='application/x-mpegURL'>-->
+    <source src="https://sitefilter.gramant.ru/static/test-video.mp4" type='video/mp4'>
+</video>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script type="text/javascript" src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+    <script src="https://static.kost.tv/player/playerjs.js"></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        #player {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="player"></div>
+
+<script>
+    var origin = location.origin || "";
+    var ancestorOrigins = location.ancestorOrigins || [];
+    var ancestorOriginsArray = [];
+    if (ancestorOrigins.length) {
+        origin = ancestorOrigins[ancestorOrigins.length - 1];
+        for (var i = 0; i < ancestorOrigins.length; i++) {
+            ancestorOriginsArray.push(ancestorOrigins[i]);
+        }
+    }
+
+    ancestorOriginsArray.unshift(location.origin);
+
+    var player = new Playerjs({
+        id: "player",
+        file: "//commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+        preroll: "js:getPreroll",
+        autoplay: 0,
+        volume: 0
+    });
+
+    var isPlayerReady = false;
+    var shouldStartAfterInit = false;
+
+    var target = parent;
+    var config = {};
+
+    var sentAdStarted = false;
+    var adImp = false;
+    var adStarted = false;
+
+    var prerollsRequested = 0;
+    var completes = 0;
+    var attempts = 0;
+    var views = 0;
+
+    var sentLoaded = false;
+    var sentReady = false;
+
+    var vastArray = [];
+
+    var visibility = null;
+
+    window.addEventListener("message", function (e) {
+        var event = e.data;
+        console.log(event);
+        if (event.target === "_ve_iframe") {
+            switch (event.event) {
+                case "config":
+                    if (!sentReady) {
+                        sentReady = true;
+                        config = event.info;
+                        sendMessage("gotConfig");
+                    }
+                    break;
+                case "target":
+                    if (!sentLoaded) {
+                        sentLoaded = true;
+                        target = e.source;
+                        sendMessage("load");
+                    }
+                    break;
+                case "start":
+                    if (isPlayerReady) {
+                        player.api("play");
+                    } else {
+                        shouldStartAfterInit = true;
+                    }
+                    break;
+                case "changeVolume":
+                    player.api('volume', event.info); // For change player volume through api
+                    break;
+            }
+        }
+    });
+
+    function PlayerjsEvents (event, type, value) {
+        switch (event) {
+            case "init":
+                isPlayerReady = true;
+                if (shouldStartAfterInit) {
+                    player.api("play");
+                }
+                break;
+            case "play":
+                console.log('Reached cont');
+                sendMessage("_ve_sequence_end");
+                break;
+            case "end":
+                break;
+            case "vast_load":
+                adImp = false;
+                break;
+            case "vast_start":
+                if (!sentAdStarted) {
+                    sendMessage("_ve_sequence_start");
+                    sentAdStarted = true;
+                }
+                sendMessage('_ve_ad_start')
+            case "vast_Impression":
+                if (!adImp) {
+                    adStarted = true
+                    views++
+                    sendMessage("_ve_ad_imp", views);
+                    adImp = true;
+                }
+                break;
+            case "vast_click":
+                sendMessage("click");
+                break;
+            case "vast_complete":
+                if (adImp) {
+                    completes++;
+                    sendMessage("complete", completes);
+                }
+                break;
+            case 'visibility':
+                if (type === 'player') {
+                    visibility = value
+                }
+                break;
+            case 'vast_volume':
+                var playerValue = JSON.parse(value);
+                var volume = playerValue.volume || 0;
+                sendMessage("_ve_ad_volume", volume);
+        }
+    }
+
+    function getPreroll () {
+        return "http://localhost:8080/vast4-sample1.xml";
+    }
+
+    // function getPreroll () {
+    //     console.log('Preroll lookup');
+    //     var firstPack = config.vastPacks[0];
+    //
+    //     if (!firstPack) {
+    //         console.log("no pack for current turn");
+    //         sendMessage("_ve_sequence_end");
+    //         return "";
+    //     }
+    //
+    //     if (!vastArray.length) {
+    //         vastArray = firstPack;
+    //     }
+    //
+    //     if (adStarted) {
+    //         adStarted = false;
+    //         var nextPack = config.vastPacks[views];
+    //
+    //         if (nextPack) {
+    //             vastArray = vastArray.concat(nextPack)
+    //         }
+    //     }
+    //
+    //     if (prerollsRequested >= vastArray.length) {
+    //         prerollsRequested = 0;
+    //         attempts++
+    //     }
+    //
+    //     prerollsRequested++;
+    //
+    //     console.log("views:", views);
+    //     console.log("attempts:", attempts);
+    //     console.log("prerollsRequested:", prerollsRequested);
+    //
+    //     if (views >= config.maxViews) {
+    //         console.log("reached max views");
+    //         sendMessage("_ve_sequence_end");
+    //         return "";
+    //     }
+    //
+    //     if (attempts >= config.maxAttempts) {
+    //         console.log("all attempts are used");
+    //         sendMessage("_ve_sequence_end");
+    //         return "";
+    //     }
+    //
+    //     var currentPreroll = vastArray[prerollsRequested - 1];
+    //     console.log("currentPreroll:", currentPreroll);
+    //     if (currentPreroll) {
+    //         currentPreroll = updateUrlParameter(
+    //             currentPreroll,
+    //             "dc",
+    //             btoa(JSON.stringify(ancestorOriginsArray))
+    //         );
+    //         currentPreroll = updateUrlParameter(currentPreroll, "dl", origin);
+    //         currentPreroll = addSizeParams(currentPreroll);
+    //         currentPreroll = addVisibilityParams(currentPreroll);
+    //
+    //         console.log('Found PR:' + currentPreroll || "");
+    //         return currentPreroll || "";
+    //     }
+    //     console.log('Reached end');
+    //     sendMessage("_ve_sequence_end");
+    //     return "";
+    // }
+
+    function sendMessage (event, info) {
+        console.log("sending message to parent");
+        target.postMessage(
+            {
+                target: "_ve_vpaid",
+                event: event,
+                info: info
+            },
+            "*"
+        );
+    }
+
+    function updateUrlParameter (uri, key, value) {
+        value = encodeURIComponent(value);
+        var i = uri.indexOf("#");
+        var hash = i === -1 ? "" : uri.substr(i);
+        uri = i === -1 ? uri : uri.substr(0, i);
+
+        var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+        var separator = uri.indexOf("?") !== -1 ? "&" : "?";
+        if (uri.match(re)) {
+            uri = uri.replace(re, "$1" + key + "=" + value + "$2");
+        } else {
+            uri = uri + separator + key + "=" + value;
+        }
+        return uri + hash;
+    }
+
+    function getCurrentSize () {
+        var playerElement = document.getElementById('player');
+
+        if (playerElement) {
+            var currentWidth = playerElement.clientWidth || "";
+            var currentHeight = playerElement.clientHeight || "";
+
+            return { width: currentWidth, height: currentHeight };
+        }
+        return null;
+    }
+
+    function addSizeParams (url) {
+        if (url) {
+            var currentSize = getCurrentSize();
+
+            if (currentSize) {
+                var updatedUrl = updateUrlParameter(url, "width", currentSize.width);
+                updatedUrl = updateUrlParameter(updatedUrl, "height", currentSize.height);
+
+                return updatedUrl;
+            }
+        }
+        return url
+    }
+
+    function addVisibilityParams (url) {
+        if (visibility !== null) {
+            return updateUrlParameter(url, "vi", visibility);
+        }
+        return url;
+    }
+
+</script>
+</body>
+</html>

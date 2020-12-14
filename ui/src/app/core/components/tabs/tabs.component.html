@@ -1,0 +1,12 @@
+<ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item" role="presentation" *ngFor="let tab of tabs">
+        <a class="nav-link" [ngClass]="{'active': tab.active}" (click)="setActive(tab)">{{tab.name}}</a>
+    </li>
+
+    <li *ngIf="newTabShow">
+        <a class="nav-link" (click)="newTab()"><i class="fa fa-plus"></i></a>
+    </li>
+</ul>
+<div class="tab-content">
+    <ng-content></ng-content>
+</div>

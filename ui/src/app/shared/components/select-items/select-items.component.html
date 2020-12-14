@@ -1,0 +1,23 @@
+<div *ngFor="let item of target[itemsPropName]" [class.readonly]="readOnly" class="items-container">
+    <alert *ngIf="item" class="item-alert-sticker custom-alert-sticker"
+           [type]="itemStyles[item[itemIdPropName] || item] || 'info'"
+           (onClose)="onDeleteItem(item)">
+        {{ getItemLabel(item) }}
+        <i class="fa fa-times" (click)="onDeleteItem(item)"></i>
+    </alert>
+</div>
+<div class="item-add" *ngIf="canAddMore()">
+    <div class="btn-group" dropdown>
+        <a href="#" class="add-button" [ngClass]="{'no-items': !target[itemsPropName]?.length}" dropdownToggle>
+            <i class="fa fa-plus-circle" style="display: inline"></i>&nbsp;&nbsp;{{addButtonText || ''}}
+        </a>
+        <div *dropdownMenu class="dropdown-menu animated" role="menu">
+            <a *ngFor="let item of getAvailableItems()"
+               class="dropdown-item"
+               href="#"
+               (click)="onAddItem(item)">
+                {{ getItemLabel(item) }}
+            </a>
+        </div>
+    </div>
+</div>

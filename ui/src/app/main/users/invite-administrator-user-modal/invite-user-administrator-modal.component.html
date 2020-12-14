@@ -1,0 +1,63 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title" translate>Invite administrator</h4>
+    </div>
+    <div class="modal-body">
+
+        <form class="form-horizontal mt-md-2" [formGroup]="updateForm" (submit)="submitRequest()">
+
+            <div class="form-group row">
+                <div class="col-4 text-right">
+                    <label class="text-bold col-form-label" translate>First name</label>
+                </div>
+
+                <div class="col-8">
+                    <input formControlName="name" type="text" class="form-control"
+                           [ngClass]="{'is-invalid': getControl('name').invalid && getControl('name').touched}"/>
+                    <div class="invalid-feedback" *ngIf="getControl('name').invalid && getControl('name').touched">
+                        <span class="text-danger" *ngIf="getControl('name').errors.required">Required field</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4 text-right">
+                    <label class="text-bold col-form-label" translate>E-mail</label>
+                </div>
+
+                <div class="col-8">
+                    <input type="email" class="form-control" formControlName="email"
+                           [ngClass]="{'is-invalid': getControl('email').invalid && getControl('email').touched}"
+                    >
+                    <div class="invalid-feedback" *ngIf="getControl('email').invalid && getControl('email').touched">
+                        <span class="text-danger" *ngIf="getControl('email').errors.required">Required field</span>
+                        <span class="text-danger" *ngIf="getControl('email').errors.email">Invalid email</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-8">
+                    <span class="text-danger"
+                          *ngIf="inviteAdministratorRequestStat.isRequestFailed">{{inviteAdministratorRequestStat.error}}</span>
+                </div>
+            </div>
+
+            <div class="mt-5 row">
+                <div class="col-12 text-right">
+                    <app-spinner [show]="inviteAdministratorRequestStat.isRequest">
+                    <button type="button" class="btn btn-secondary"
+                            (click)="close()">
+                        <i class="fa fa-ban"></i>&nbsp;&nbsp;
+                        <span translate>Cancel</span>
+                    </button>
+
+                        <button type="submit" class="btn btn-primary ml-2"
+                                [disabled]="updateForm.invalid" translate>Invite</button>
+                    </app-spinner>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

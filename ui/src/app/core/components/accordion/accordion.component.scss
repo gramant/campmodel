@@ -1,0 +1,27 @@
+.accordion-head {
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+.accordion-card-head {
+    border-bottom: 1px solid #e6e6e6;
+}
+.accordion-card-head:hover {
+    background-color: #e6e6e6;
+}
+
+.accordion-body {
+    display: none;
+}
+.accordion-body.active {
+    display: block;
+    animation: fadeInDown .2s;
+}
+
+.card-default {
+    border-top-width: 1px;
+}
+
+.accordion-head:focus {
+    background-color: #00aaaa;
+}

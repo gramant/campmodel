@@ -1,0 +1,14 @@
+img.language-flag {
+    width: 24px;
+    height: 24px;
+}
+
+.grayscale {
+    -webkit-filter: grayscale(0);
+    filter: none;
+}
+
+.grayscale:hover {
+    -webkit-filter: grayscale(0.6); /* Google Chrome, Safari 6+ & Opera 15+ */
+    filter: grayscale(0.6); /* Microsoft Edge and Firefox 35+ */
+}

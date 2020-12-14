@@ -1,0 +1,12 @@
+<div class="card card-default mb-1">
+    <div class="card-header accordion-card-head cursor-pointer d-flex align-items-center justify-content-between" (click)="onClick($event)">
+        <span class="accordion-head mb-0">
+            {{ title }}
+        </span>
+        <i class="float-right fa icon-arrow-up" *ngIf="active"></i>
+        <i class="float-right fa icon-arrow-down" *ngIf="!active"></i>
+    </div>
+    <div class="card-body accordion-body" [class.active]="active">
+        <ng-content></ng-content>
+    </div>
+</div>

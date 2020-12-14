@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html style="height: 100%;
+    justify-content: center;
+    display: flex;
+overflow: hidden;">
+<head>
+    <title>Vast-Player Example</title>
+    <link href="//cdn.rawgit.com/MailOnline/videojs-vast-vpaid/master/bin/videojs.vast.vpaid.min.css" rel="stylesheet">
+    <!--    <link rel="stylesheet" href="http://localhost:8080/video-js-bar.css">-->
+    <link rel="stylesheet" href="http://localhost:8080/video-js.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vast-player@latest/dist/vast-player.min.js"></script>
+
+
+    <style>
+        #container {
+            /*width: 640px;*/
+            /*height: 385px;*/
+            /*position: relative;*/
+            width: 100%;
+        }
+
+        .hide {
+            /*width: 0 !important;*/
+            /*height: 0 !important;*/
+            display: none !important;
+        }
+
+        .base-timer {
+            position: relative;
+            width: 30px;
+            height: 30px;
+        }
+
+        .base-timer__svg {
+            transform: scaleX(-1);
+        }
+
+        .base-timer__circle {
+            fill: none;
+            stroke: none;
+        }
+
+        .base-timer__path-elapsed {
+            stroke-width: 7px;
+            stroke: grey;
+        }
+
+        .base-timer__path-remaining {
+            stroke-width: 7px;
+            stroke-linecap: round;
+            transform: rotate(90deg);
+            transform-origin: center;
+            transition: 1s linear all;
+            fill-rule: nonzero;
+            stroke: currentColor;
+        }
+
+        .base-timer__path-remaining.green {
+            color: rgb(65, 184, 131);
+        }
+
+        .base-timer__path-remaining.orange {
+            color: orange;
+        }
+
+        .base-timer__path-remaining.red {
+            color: red;
+        }
+
+        .base-timer__label {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+
+    </style>
+</head>
+<body style="margin: 0; display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+">
+
+<div style="
+    margin-bottom: 40px;
+    z-index: 1002;
+    width: 160px;
+    bottom: 0;
+    position: absolute;
+    right: 0;">
+
+    <div class="video-js vjs-default-skin vjs-big-play-centered vid2-dimensions vjs-controls-enabled vjs-workinghover vjs-user-active vjs-has-started vjs-ad-playing vjs-paused"
+         style="" id="controlMainContainer">
+        <div class="vjs-control-bar" dir="ltr" role="group">
+
+            <!--            <div style="width: 50px;height: 50px;"></div>-->
+            <div class="vjs-remaining-time vjs-time-control vjs-control">
+                <div class="vjs-remaining-time-display" aria-live="off" id="divRemainingTime">
+                    <span class="vjs-control-text">Remaining Time</span>
+                    -0:15
+                </div>
+            </div>
+            <div id="circleTimer" style="margin-right: 5px;"></div>
+            <button class="vjs-play-control vjs-control vjs-button vjs-paused" type="button" aria-live="polite"
+                    id="buttonPlay">
+                <span class="vjs-control-text">Play</span></button>
+            <button class="vjs-play-control vjs-control vjs-button vjs-playing " type="button" aria-live="polite"
+                    id="buttonPaused"><span
+                    class="vjs-control-text">Pause</span></button>
+            <div class="vjs-volume-menu-button vjs-menu-button vjs-menu-button-inline vjs-control vjs-button vjs-volume-menu-button-horizontal vjs-vol-3"
+                 tabindex="0" role="button" aria-live="polite" id="divVolume">
+                <div class="vjs-menu">
+                    <div class="vjs-menu-content">
+                        <div tabindex="0" class="vjs-volume-bar vjs-slider-bar vjs-slider vjs-slider-horizontal"
+                             role="slider" aria-valuenow="100.00" aria-valuemin="0" aria-valuemax="100"
+                             aria-label="volume level" aria-valuetext="100.00%">
+                            <div class="vjs-volume-level"><span class="vjs-control-text"></span></div>
+                        </div>
+                    </div>
+                </div>
+                <span class="vjs-control-text" id="spanVolume">Mute</span>
+            </div>
+
+            <div class="vjs-current-time vjs-time-control vjs-control">
+                <div class="vjs-current-time-display" aria-live="off" id="divCurrentTime">
+                    <span class="vjs-control-text">Current Time</span>
+                    0:14
+                </div>
+            </div>
+            <div class="vjs-time-control vjs-time-divider">
+                <div><span>/</span></div>
+            </div>
+            <div class="vjs-duration vjs-time-control vjs-control">
+                <div class="vjs-duration-display" aria-live="off" id="divDurationTime">
+                    <span class="vjs-control-text">Duration Time</span> 0:30
+                </div>
+            </div>
+            <!--        <div class="vjs-progress-control vjs-control">-->
+            <!--            <div tabindex="0" class="vjs-progress-holder vjs-slider vjs-slider-horizontal" role="slider"-->
+            <!--                 aria-valuenow="48.02" aria-valuemin="0" aria-valuemax="100" aria-label="progress bar"-->
+            <!--                 aria-valuetext="0:14">-->
+            <!--                <div class="vjs-load-progress" style="width: 0.850436%;"><span class="vjs-control-text"-->
+            <!--                                                                               style="left: 0%; width: 100%;"><span>Loaded</span>: 0%</span>-->
+            <!--                </div>-->
+            <!--                <div class="vjs-mouse-display" data-current-time="0:00" style="left: 0px;"></div>-->
+            <!--                <div class="vjs-play-progress vjs-slider-bar" data-current-time="0:14" style="width: 48.02%;"><span-->
+            <!--                        class="vjs-control-text"><span>Progress</span>: 0%</span></div>-->
+            <!--            </div>-->
+            <!--        </div>-->
+            <!--        <div class="vjs-live-control vjs-control vjs-hidden">-->
+            <!--            <div class="vjs-live-display" aria-live="off"><span class="vjs-control-text">Stream Type</span>LIVE</div>-->
+            <!--        </div>-->
+
+            <div class="vjs-custom-control-spacer vjs-spacer ">&nbsp;</div>
+            <div class="vjs-playback-rate vjs-menu-button vjs-menu-button-popup vjs-control vjs-button vjs-hidden"
+                 tabindex="0" role="menuitem" aria-live="polite" aria-expanded="false" aria-haspopup="true">
+                <div class="vjs-menu" role="presentation">
+                    <ul class="vjs-menu-content" role="menu"></ul>
+                </div>
+                <span class="vjs-control-text">Playback Rate</span>
+                <div class="vjs-playback-rate-value">1</div>
+            </div>
+            <div class="vjs-chapters-button vjs-menu-button vjs-menu-button-popup vjs-control vjs-button vjs-hidden"
+                 tabindex="0" role="menuitem" aria-live="polite" aria-expanded="false" aria-haspopup="true"
+                 aria-label="Chapters Menu">
+                <div class="vjs-menu" role="presentation">
+                    <ul class="vjs-menu-content" role="menu">
+                        <li class="vjs-menu-title" tabindex="-1">Chapters</li>
+                    </ul>
+                </div>
+                <span class="vjs-control-text">Chapters</span></div>
+            <div class="vjs-descriptions-button vjs-menu-button vjs-menu-button-popup vjs-control vjs-button vjs-hidden"
+                 tabindex="0" role="menuitem" aria-live="polite" aria-expanded="false" aria-haspopup="true"
+                 aria-label="Descriptions Menu">
+                <div class="vjs-menu" role="presentation">
+                    <ul class="vjs-menu-content" role="menu">
+                        <li class="vjs-menu-item vjs-selected" tabindex="-1" role="menuitemcheckbox" aria-live="polite"
+                            aria-checked="true">descriptions off<span class="vjs-control-text">, selected</span></li>
+                    </ul>
+                </div>
+                <span class="vjs-control-text">Descriptions</span></div>
+            <div class="vjs-subtitles-button vjs-menu-button vjs-menu-button-popup vjs-control vjs-button vjs-hidden"
+                 tabindex="0" role="menuitem" aria-live="polite" aria-expanded="false" aria-haspopup="true"
+                 aria-label="Subtitles Menu">
+                <div class="vjs-menu" role="presentation">
+                    <ul class="vjs-menu-content" role="menu">
+                        <li class="vjs-menu-item vjs-selected" tabindex="-1" role="menuitemcheckbox" aria-live="polite"
+                            aria-checked="true">subtitles off<span class="vjs-control-text">, selected</span></li>
+                    </ul>
+                </div>
+                <span class="vjs-control-text">Subtitles</span></div>
+            <div class="vjs-captions-button vjs-menu-button vjs-menu-button-popup vjs-control vjs-button vjs-hidden"
+                 tabindex="0" role="menuitem" aria-live="polite" aria-expanded="false" aria-haspopup="true"
+                 aria-label="Captions Menu">
+                <div class="vjs-menu" role="presentation">
+                    <ul class="vjs-menu-content" role="menu">
+                        <li class="vjs-menu-item vjs-selected" tabindex="-1" role="menuitemcheckbox" aria-live="polite"
+                            aria-checked="true">captions off<span class="vjs-control-text">, selected</span></li>
+                    </ul>
+                </div>
+                <span class="vjs-control-text">Captions</span></div>
+            <!--        <button class="vjs-fullscreen-control vjs-control vjs-button" type="button" aria-live="polite"-->
+            <!--                id="buttonFullScreen"><span-->
+            <!--                class="vjs-control-text">Fullscreen</span></button>-->
+
+
+        </div>
+    </div>
+
+</div>
+
+<div style="position: absolute; right: 0;">
+    <span id="duration"></span>
+    <span id="left"></span>
+</div>
+
+<div id="container" style="color: white;"></div>
+<script>
+    class CircleTimer {
+
+        FULL_DASH_ARRAY = 283;
+        WARNING_THRESHOLD = 10;
+        ALERT_THRESHOLD = 5;
+
+        COLOR_CODES = {
+            info: {
+                color: "green"
+            },
+            warning: {
+                color: "orange",
+                threshold: this.WARNING_THRESHOLD
+            },
+            alert: {
+                color: "red",
+                threshold: this.ALERT_THRESHOLD
+            }
+        };
+
+        timeDuration = 20;
+        timePassed = 0;
+        timeLeft = this.timeDuration;
+        timerInterval = null;
+        remainingPathColor = this.COLOR_CODES.info.color;
+
+
+        /**
+         *
+         * @param {number} timeDuration
+         * @param {string} containerTagId
+         */
+        constructor(timeDuration, containerTagId) {
+            this.timeDuration = timeDuration;
+
+
+            document.getElementById(containerTagId).innerHTML = `
+<div class="base-timer">
+  <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <g class="base-timer__circle">
+      <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+      <path
+        id="base-timer-path-remaining"
+        stroke-dasharray="283"
+        class="base-timer__path-remaining green"
+        d="
+          M 50, 50
+          m -45, 0
+          a 45,45 0 1,0 90,0
+          a 45,45 0 1,0 -90,0
+        "
+      ></path>
+    </g>
+  </svg>
+
+</div>
+`;
+            // <span id="base-timer-label" class="base-timer__label" style="color: white;">${this.formatTime(
+            //         this.timeLeft
+            //     )}</span>
+        }
+
+
+        startTimer() {
+            this.timerInterval = setInterval(() => {
+                this.timePassed = this.timePassed += 1;
+                this.timeLeft = this.timeDuration - this.timePassed;
+                // document.getElementById("base-timer-label").innerHTML = formatTime(
+                //     this.timeLeft
+                // );
+                this.setCircleDasharray();
+                this.setRemainingPathColor(this.timeLeft);
+
+                if (this.timeLeft === 0) {
+                    this.onTimesUp();
+                }
+            }, 1000);
+        }
+
+
+        setTimeDuration(timeDuration) {
+            this.timeDuration = timeDuration;
+        }
+
+        onTimesUp() {
+            clearInterval(this.timerInterval);
+        }
+
+        updateTimeValue(timeLeft) {
+            if (timeLeft !== null && timeLeft >= 0) {
+                this.timeLeft = timeLeft;
+
+                // document.getElementById("base-timer-label").innerHTML = this.formatTime(
+                //     this.timeLeft
+                // );
+
+                this.setCircleDasharray();
+            }
+        }
+
+
+        setRemainingPathColor(timeLeft) {
+            const {alert, warning, info} = this.COLOR_CODES;
+            if (timeLeft <= alert.threshold) {
+                document
+                    .getElementById("base-timer-path-remaining")
+                    .classList.remove(warning.color);
+                document
+                    .getElementById("base-timer-path-remaining")
+                    .classList.add(alert.color);
+            } else if (timeLeft <= warning.threshold) {
+                document
+                    .getElementById("base-timer-path-remaining")
+                    .classList.remove(info.color);
+                document
+                    .getElementById("base-timer-path-remaining")
+                    .classList.add(warning.color);
+            }
+        };
+
+
+        calculateTimeFraction() {
+            const rawTimeFraction = this.timeLeft / this.timeDuration;
+            return rawTimeFraction - (1 / this.timeDuration) * (1 - rawTimeFraction);
+        };
+
+        setCircleDasharray() {
+            const circleDasharray = `${(
+                this.calculateTimeFraction() * this.FULL_DASH_ARRAY
+            ).toFixed(0)} 283`;
+            document
+                .getElementById("base-timer-path-remaining")
+                .setAttribute("stroke-dasharray", circleDasharray);
+        };
+
+        formatTime(time) {
+            const minutes = Math.floor(time / 60);
+            let seconds = Math.floor(time % 60);
+
+            if (seconds < 10) {
+                seconds = `0${seconds}`;
+            }
+
+            return `${minutes}:${seconds}`;
+        };
+
+    }
+
+    class PlayerControl {
+        /**
+         * @type {Object}
+         * @private
+         */
+        player_ = null;
+
+        /**
+         * @type {CircleTimer}
+         * @private
+         */
+        circleTimer = null;
+
+        /**
+         * @type {HTMLElement}
+         * @private
+         */
+        controlMainContainer = null;
+
+        /**
+         * @type {HTMLElement}
+         * @private
+         */
+        buttonPlay = null;
+
+        /**
+         * @type {HTMLElement}
+         * @private
+         */
+        buttonPaused = null;
+
+        /**
+         * @type {HTMLElement}
+         * @private
+         */
+        spanUnmute = null;
+        /**
+         * @type {HTMLElement}
+         * @private
+         */
+        spanMute = null;
+        /**
+         * @type {HTMLElement}
+         * @private
+         */
+        spanVolume = null;
+
+        DEFAULT_VALUE_VOLUME = 0.5;
+
+        /**
+         * @type {HTMLElement}
+         * @private
+         */
+        lastValueVolume = null;
+
+        /**
+         * @type {HTMLElement}
+         * @private
+         */
+        divCurrentTime = null;
+        /**
+         * @type {HTMLElement}
+         * @private
+         */
+        divDurationTime = null;
+        /**
+         * @type {HTMLElement}
+         * @private
+         */
+        divRemainingTime = null;
+        /**
+         * @type {HTMLElement}
+         * @private
+         */
+        buttonFullScreen = null;
+
+        /**
+         *
+         * @param {Player} player_
+         */
+        constructor(player_) {
+            this.player_ = player_;
+        }
+
+        controlBarInit() {
+            this.controlMainContainer = document.getElementById('controlMainContainer');
+
+            this.circleTimer = new CircleTimer(0, 'circleTimer');
+
+            this.controlPlayPauseInit_();
+            this.volumeControlInit_();
+            this.durationControlInit_();
+            // this.fullScreenControlInit_();
+        }
+
+        controlPlayPauseInit_() {
+            this.buttonPlay = document.getElementById('buttonPlay');
+            this.buttonPaused = document.getElementById('buttonPaused');
+
+            this.buttonPlay.addEventListener("click", this.clickButtonPlay.bind(this));
+            this.buttonPaused.addEventListener("click", this.clickButtonPaused.bind(this));
+
+            this.buttonPlay.classList.add('hide');
+            this.buttonPaused.classList.remove('hide')
+        }
+
+
+        clickButtonPlay() {
+            console.log('clickButtonPlay');
+            this.player_.adResumed();
+            addElClass(this.buttonPlay, 'hide');
+            removeElClass(this.buttonPaused, 'hide');
+            this.buttonPlay.classList.add('hide');
+            this.buttonPaused.classList.remove('hide')
+        }
+
+
+        clickButtonPaused() {
+            console.log('clickButtonPaused');
+            this.player_.adPaused();
+            this.buttonPaused.classList.add('hide');
+            this.buttonPlay.classList.remove('hide')
+        }
+
+
+        volumeControlInit_() {
+            this.spanUnmute = document.getElementById('spanUnmute');
+            this.spanMute = document.getElementById('spanMute');
+
+            this.spanVolume = document.getElementById('spanVolume');
+            this.divVolume = document.getElementById('divVolume');
+
+            this.divVolume.addEventListener("click", this.clickDivVolume.bind(this));
+        }
+
+
+        clickDivVolume() {
+            console.log('clickButtonMute');
+            if (this.player_.vastPlayer.adVolume === 0) {
+                // setStatusHideForElem(spanMute, true);
+                // setStatusHideForElem(spanUnmute, false);
+                this.spanVolume.textContent = 'Mute';
+                this.divVolume.classList.remove('vjs-vol-0');
+                this.divVolume.classList.add('vjs-vol-3');
+                if (this.lastValueVolume !== null) {
+                    this.player_.vastPlayer.adVolume = this.lastValueVolume;
+                } else {
+                    this.player_.vastPlayer.adVolume = this.DEFAULT_VALUE_VOLUME;
+                }
+            } else {
+                this.spanVolume.textContent = 'Unmute';
+                // setStatusHideForElem(spanMute, false);
+                // setStatusHideForElem(spanUnmute, true);
+                this.divVolume.classList.remove('vjs-vol-3');
+                this.divVolume.classList.add('vjs-vol-0');
+                this.lastValueVolume = this.player_.vastPlayer.adVolume;
+                this.player_.vastPlayer.adVolume = 0;
+            }
+        }
+
+
+        durationControlInit_() {
+            this.divCurrentTime = document.getElementById('divCurrentTime');
+            this.divDurationTime = document.getElementById('divDurationTime');
+            this.divRemainingTime = document.getElementById('divRemainingTime');
+
+            this.circleTimer.setTimeDuration(this.player_.vastPlayer.adDuration);
+
+            setInterval(() => {
+                console.log('durationControl');
+                this.divRemainingTime.textContent = formattingSecondToMMSS(this.player_.vastPlayer.adRemainingTime);
+                // divDurationTime.textContent =formattingSecondToMMSS(player_.adDuration);
+                this.circleTimer.updateTimeValue(this.player_.vastPlayer.adRemainingTime)
+            }, 500)
+        }
+
+        fullScreenControlInit_() {
+            this.buttonFullScreen = document.getElementById('buttonFullScreen');
+
+            this.buttonFullScreen.addEventListener("click", this.clickButtonFullScreen);
+        }
+
+
+        clickButtonFullScreen() {
+            parent.postMessage(new VpaidEvent("resizeAd", {
+                width: this.player_.vastPlayer.width,
+                height: this.player_.vastPlayer.height,
+                mode: 'fullscreen'
+            }), "*");
+
+
+            // if(controlMainContainer.classList.contains('vjs-fullscreen')){
+            //     controlMainContainer.classList.remove('vjs-fullscreen');
+            // } else {
+            //     controlMainContainer.classList.add('vjs-fullscreen')
+            // }
+        }
+    }
+
+    class Player {
+        /**
+         * @type {HTMLElement}
+         * @private
+         */
+        playerContainer = null;
+
+        /**
+         * @type {Object} VASTPlayer
+         * @public
+         */
+        vastPlayer = null;
+
+        /**
+         *
+         * @type {PlayerControl}
+         * @private
+         */
+        playerControl = null;
+
+        /**
+         *
+         * @type {Object}
+         * @private
+         */
+        adParameters_ = {
+            serverUrl: null,
+            vastTag_: null,
+            minWidth: 0,
+            minHeight: 0
+        };
+
+        init() {
+            this.createListeners();
+        }
+
+        /**
+         *
+         * @param VASTPlayer
+         * @param {VastParam} param
+         */
+        create(VASTPlayer, param) {
+            this.playerContainer = document.getElementById('container');
+
+            this.vastPlayer = new VASTPlayer(this.playerContainer);
+
+            this.adParameters_ = param.adParameters_;
+
+            this.playerControl = new PlayerControl(this);
+
+            console.log(param.width)
+            console.log(param.height)
+
+
+            this.vastPlayer.width = param.width;
+            this.vastPlayer.height = param.height;
+            // player.viewMode = param.viewMode;
+
+            this.vastPlayer.once('AdStopped', function () {
+                console.log('Ad finished playback!');
+                parent.postMessage(new VpaidEvent("AdStopped", null), "*")
+            });
+
+            this.vastPlayer.load(
+                param.vastTag,
+            ).then(() => {
+                this.playerControl.controlBarInit();
+                this.addListenerSize();
+
+                this.sendMessage("vast-Impression");
+
+                return this.vastPlayer.startAd();
+            }).catch((reason) => {
+                setTimeout(() => {
+                    parent.postMessage(new VpaidEvent("AdStopped", null), "*");
+                    throw reason;
+                }, 0);
+            });
+        }
+
+        addListenerSize() {
+            window.addEventListener('resize', this.widthChange);
+        }
+
+        widthChange() {
+            if (!this.checkAdParameters_()) {
+                sendMessage('size-was-change')
+            }
+        }
+
+        checkAdParameters_() {
+            if (!this.adParameters_) {
+                console.log("AdParameters is null");
+                return false;
+            }
+
+            if (!this.adParameters_.vastTag) {
+                console.log("VastTag is null");
+                return false;
+            }
+
+            let status = true;
+
+            if (this.adParameters_.minWidth && this.adParameters_ !== 0) {
+                if (this.playerContainer.offsetWidth < +this.adParameters_.minWidth) {
+                    status = false;
+                }
+            }
+
+            if (this.adParameters_.minHeight && this.adParameters_ !== 0) {
+                if (this.playerContainer.offsetWidth < +this.adParameters_.minHeight) {
+                    status = false;
+                }
+            }
+
+            return status;
+        }
+
+        /** Add createListeners **/
+        createListeners() {
+            if (window.addEventListener) {
+                window.addEventListener("message", this.listenersHandler.bind(this), false);
+            } else {
+                // IE8
+                window.attachEvent("onmessage", this.listenersHandler);
+            }
+        }
+
+        listenersHandler(event) {
+            if (event.origin !== 'http://localhost:8080') {
+                // что-то прислали с неизвестного домена - проигнорируем..
+                console.log("origin not found" + event.data);
+                return;
+            }
+            console.log("getting event ");
+            console.log(event.data);
+
+            const vpaidEvent = event.data;
+
+            switch (vpaidEvent.type) {
+                case "create":
+                    this.create(window.VASTPlayer, vpaidEvent.params);
+                    break;
+                case "startAd":
+                    this.startAd(vpaidEvent.params);
+                    break;
+                case "AdSizeChange":
+                    this.resizeAd(vpaidEvent.params);
+                    break;
+                case "AdPaused":
+                    this.adPaused();
+                    break;
+                case 'AdResumed':
+                    this.adResumed();
+                    break;
+
+            }
+
+            console.log("getting ");
+            console.log(event.data);
+        }
+
+
+        startAd() {
+            this.vastPlayer.startAd();
+        }
+
+
+        resizeAd(params) {
+            if (this.vastPlayer) {
+                this.vastPlayer.width = params.width;
+                this.vastPlayer.height = params.height;
+                this.vastPlayer.viewMode = params.viewMode;
+            }
+        }
+
+        adPaused() {
+            console.log('adPaused');
+            this.vastPlayer.pauseAd();
+        }
+
+        adResumed() {
+            this.vastPlayer.resumeAd()
+        }
+
+        /** Send message to statistic server **/
+        sendMessage(message) {
+            httpGet(this.adParameters_.serverUrl + '/error/' + message)
+        }
+    }
+
+
+    function formattingSecondToMMSS(second) {
+        return new Date(second * 1000).toISOString().substr(14, 5);
+    }
+
+    function isElement(obj) {
+        try {
+            //Using W3 DOM2 (works for FF, Opera and Chrome)
+            return obj instanceof HTMLElement;
+        } catch (e) {
+            //Browsers not supporting W3 DOM2 don't have HTMLElement and
+            //an exception is thrown and we end up here. Testing some
+            //properties that all elements have (works on IE7)
+            return (typeof obj === "object") &&
+                (obj.nodeType === 1) && (typeof obj.style === "object") &&
+                (typeof obj.ownerDocument === "object");
+        }
+    }
+
+    class VpaidEvent {
+        type; //Type event (for switch)
+        params; // Params event. May be different
+
+        constructor(type, params) {
+            this.type = type;
+            this.params = params;
+        }
+    }
+
+    class VastParam {
+        vastTag;
+        width;
+        height;
+        adParameters_;
+    }
+
+    const player = new Player();
+    player.init();
+
+    function httpGet(theUrl) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", theUrl, false); // false for synchronous request
+        xmlHttp.send(null);
+        return xmlHttp.responseText;
+    }
+
+    function addElClass(element, classToAdd) {
+        if (element.classList) {
+            element.classList.add(classToAdd);
+
+            // Don't need to `throwIfWhitespace` here because `hasElClass` will do it
+            // in the case of classList not being supported.
+        } else if (!hasElClass(element, classToAdd)) {
+            element.className = (element.className + ' ' + classToAdd).trim();
+        }
+
+        return element;
+    }
+
+
+    /**
+     * Check if an element has a CSS class
+     *
+     * @function hasElClass
+     * @param {Element} element Element to check
+     * @param {String} classToCheck Classname to check
+     */
+
+    function hasElClass(element, classToCheck) {
+        if (element.classList) {
+            return element.classList.contains(classToCheck);
+        } else {
+            // throwIfWhitespace(classToCheck);
+            throw classToCheck;
+            // return classRegExp(classToCheck).test(element.className);
+        }
+    }
+
+    /**
+     * Remove a CSS class name from an element
+     *
+     * @function removeElClass
+     * @param {Element} element    Element to remove from class name
+     * @param {String} classToRemove Classname to remove
+     */
+
+    function removeElClass(element, classToRemove) {
+        if (element.classList) {
+            element.classList.remove(classToRemove);
+        } else {
+            throwIfWhitespace(classToRemove);
+            element.className = element.className.split(/\s+/).filter(function (c) {
+                return c !== classToRemove;
+            }).join(' ');
+        }
+
+        return element;
+    }
+
+
+</script>
+</body>
+</html>

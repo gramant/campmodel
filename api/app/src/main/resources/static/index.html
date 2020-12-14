@@ -1,0 +1,97 @@
+<html>
+<head>
+    <!-- videojs must be included first -->
+    <link rel="stylesheet" href="https://vjs.zencdn.net/5.9.2/video-js.css">
+    <script type="text/javascript" src="https://vjs.zencdn.net/5.9.2/video.js"></script>
+
+    <!-- videojs-vast-vpaid -->
+    <link href="https://cdn.rawgit.com/MailOnline/videojs-vast-vpaid/master/bin/videojs.vast.vpaid.min.css" rel="stylesheet">
+    <script src="https://cdn.rawgit.com/MailOnline/videojs-vast-vpaid/master/bin/videojs_5.vast.vpaid.min.js"></script>
+
+    <!-- viblast -->
+    <script src="https://cdn.viblast.com/vb/stable/viblast.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/openplayerjs@latest/dist/openplayer.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/openplayerjs@latest/dist/openplayer.js"></script>
+</head>
+
+<body>
+
+<video id="vid1" class="video-js vjs-default-skin vjs-big-play-centered" controls
+       data-setup='{
+            "plugins": {
+                    "vastClient": {
+"adTagUrl": "https://sitefilter.gramant.ru/ads/vast/test-16/vast.xml?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=",
+                    "adsCancelTimeout": 3000,
+                    "adsEnabled": true,
+                    "preferredTech":"html5"
+                }
+            }}'
+       width='640'
+       height='400'
+       data-viblast-key="N8FjNTQ3NDdhZqZhNGI5NWU5ZTI=">
+
+    <!--    <source src="//cdn3.viblast.com/streams/hls/airshow/playlist.m3u8" type='application/x-mpegURL'>-->
+    <source src="https://sitefilter.gramant.ru/static/test-video.mp4" type='video/mp4'>
+</video>
+
+"adTagUrl":
+"https://sitefilter.gramant.ru/ads/vast/test-9/vast.xml?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=",
+
+
+<!--<h4>With vast-player</h4>-->
+<!--<video id="vid2" class="video-js vjs-default-skin vjs-big-play-centered" controls autoplay-->
+<!--       data-setup='{-->
+<!--            "plugins": {-->
+<!--                    "vastClient": {-->
+<!--                    "adTagUrl": "http://localhost:8080/original-vast2.xml?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=",-->
+<!--                    "adsCancelTimeout": 3000,-->
+<!--                    "adsEnabled": true,-->
+<!--                    "preferredTech":"html5",-->
+<!--                    "vpaidFlashLoaderPath": "//github.com/MailOnline/videojs-vast-vpaid/blob/RELEASE/bin/VPAIDFlash.swf?raw=true"-->
+<!--                }-->
+<!--            }}'-->
+<!--       width='640'-->
+<!--       height='400'-->
+<!--       data-viblast-key="N8FjNTQ3NDdhZqZhNGI5NWU5ZTI=">-->
+
+<!--    <source src="//cdn3.viblast.com/streams/hls/airshow/playlist.m3u8" type='application/x-mpegURL'>-->
+<!--    &lt;!&ndash;    <source src="http://static.videogular.com/assets/videos/videogular.mp4" type='video/mp4'>&ndash;&gt;-->
+<!--</video>-->
+
+
+<!--<video class="op-player__media" id="video" controls playsinline autoplay>-->
+<!--    <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" type="video/mp4">-->
+<!--</video>-->
+
+<!--<p>If you like this Pen, please show your support to this project by giving it a star.</p>-->
+<!--<a class="github-button" href="https://github.com/openplayerjs/openplayerjs"-->
+<!--   data-size="large"-->
+<!--   data-show-count="true"-->
+<!--   aria-label="Star openplayerjs/openplayerjs on GitHub">Star</a>-->
+
+<!--<script>-->
+<!--    const player = new OpenPlayerJS('video', {-->
+<!--        ads: {-->
+<!--            src:['http://localhost:8080/vastWithPlayer.xml?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=']-->
+<!--            // src: ['https://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=is&c=23&pl=VAST&pli=14432293&PluID=0&pos=8834&ord=%5Btimestamp%5D&cim=1',-->
+<!--            //     'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=',]-->
+<!--        }-->
+<!--    });-->
+<!--    player.init();-->
+<!--</script>-->
+
+<!--<script>-->
+<!--    startCreateFrame();-->
+<!--</script>-->
+</body>
+</html>
+
+
+"adTagUrl": "vpaid-wrapper.xml?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=",
+
+"adTagUrl": "vastWithPlayer.xml?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=",
+"adTagUrl": "http://localhost:8080/original-vast2.xml?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=",
+
+
+vastWithPlayer.xml?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=

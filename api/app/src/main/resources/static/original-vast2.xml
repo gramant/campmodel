@@ -1,0 +1,62 @@
+<VAST version="2.0" xmlns:xsi="//www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast.xsd">
+    <Ad id="232859236">
+        <InLine>
+            <AdSystem version="2.0">Alex_Vast</AdSystem>
+            <AdTitle></AdTitle>
+            <Description></Description>
+            <Survey></Survey>
+            <Impression id="DART"><![CDATA[//qa.jwplayer.com/~alex/pixel.gif?2]]></Impression>
+
+            <Creatives>
+
+                <Creative sequence="1" AdID="">
+                    <Linear skipoffset="00:00:05">
+                        <Duration>00:00:30</Duration>
+                        <TrackingEvents>
+                            <Tracking event="start">//qa.jwplayer.com/~alex/pixel.gif?1</Tracking>
+                            <Tracking event="impression">//qa.jwplayer.com/~alex/pixel.gif?2</Tracking>
+                            <Tracking event="firstQuartile">//qa.jwplayer.com/~alex/pixel.gif?3</Tracking>
+                            <Tracking event="midpoint">//qa.jwplayer.com/~alex/pixel.gif?4</Tracking>
+                            <Tracking event="thirdQuartile">//qa.jwplayer.com/~alex/pixel.gif?5</Tracking>
+                            <Tracking event="complete">//qa.jwplayer.com/~alex/pixel.gif?6</Tracking>
+                            <Tracking event="pause">//qa.jwplayer.com/~alex/pixel.gif?7</Tracking>
+                            <Tracking event="mute">//qa.jwplayer.com/~alex/pixel.gif?8</Tracking>
+                            <Tracking event="fullscreen">//qa.jwplayer.com/~alex/pixel.gif?9</Tracking>
+                        </TrackingEvents>
+                        <AdParameters></AdParameters>
+                        <VideoClicks>
+                            <ClickThrough><![CDATA[//www.jwplayer.com/]]></ClickThrough>
+                            <ClickTracking id="Alex"><![CDATA[//qa.jwplayer.com/~alex/pixel.gif?10]]></ClickTracking>
+                        </VideoClicks>
+                        <MediaFiles>
+                            <MediaFile id="1" delivery="progressive" type="video/mp4" bitrate="0" width="640" height="360"><![CDATA[http://content.jwplatform.com/videos/AEhg3fFb-bPwArWA4.mp4]]></MediaFile>
+                        </MediaFiles>
+                    </Linear>
+                </Creative>
+            </Creatives>
+            <Extensions>
+                <Extension type="AdVerifications">
+                    <AdVerifications>
+                        <Verification vendor="company.com-omid">
+                            <JavaScriptResource apiFramework="omid" browserOptional="true">
+                                <![CDATA[ https://company.com/omid.js ]]>
+                            </JavaScriptResource>
+                            <TrackingEvents>
+                                <Tracking event="verificationNotExecuted">
+                                    <![CDATA[
+https://company.com/pixel.jpg?error=[REASON]
+]]>
+                                </Tracking>
+                            </TrackingEvents>
+                            <VerificationParameters>
+                                <![CDATA[
+parameter1=value1&parameter2=value2&parameter3=value3
+]]>
+                            </VerificationParameters>
+                        </Verification>
+                    </AdVerifications>
+                </Extension>
+            </Extensions>
+        </InLine>
+    </Ad>
+</VAST>

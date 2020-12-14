@@ -1,0 +1,27 @@
+<div class="wrapper">
+    <div class="block-center mt-4 wd-xl">
+        <!-- START card-->
+        <div class="card card-flat">
+            <div class="card-header text-center">
+                <a href="#">
+                    <img class="block-center rounded" src="assets/img/logo.png" alt="Image" style="width: 280px;"/>
+                </a>
+            </div>
+            <div class="card-body">
+                <app-spinner [show]="confirmEmailRequestStat.isRequest"></app-spinner>
+                <p class="text-danger text-center"
+                      *ngIf="confirmEmailRequestStat.isRequestFailed">{{confirmEmailRequestStat.error}}</p>
+
+                <p class="text-danger text-center"
+                      *ngIf="error">{{error}}</p>
+
+                <ng-container *ngIf="confirmEmailRequestStat.isRequestSuccess">
+                    <p class="text-success text-center pt-3">E-mail was confirmed</p>
+                    <a class="btn btn-block btn-secondary" [routerLink]="'/'">Sign in</a>
+                </ng-container>
+
+
+            </div>
+        </div>
+    </div>
+</div>

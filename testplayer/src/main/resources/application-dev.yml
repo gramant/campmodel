@@ -1,0 +1,3 @@
+app:
+  baseUrl: http://localhost:8080
+  directory-for-vast-file: /tmp/vast_file/

@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:sitefilter;MODE=PostgreSQL
+    username: sa
+    password: sa
+  jooq:
+    sql-dialect: H2
+
+logging:
+  level:
+    org.jooq: DEBUG
+    com.gramant.sitefilter: DEBUG
+  pattern:
+    console: '%d{HH:mm:ss.SSS} [%thread] [%X] %-5level %logger{36} - %msg%n'

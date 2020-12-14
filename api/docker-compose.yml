@@ -1,0 +1,9 @@
+sitefilter-db:
+ container_name: sitefilter-db
+ image: sameersbn/postgresql:10-2
+ ports:
+  - "54321:5432"
+ environment:
+  - DB_USER=sitefilter_admin
+  - DB_PASS=password
+  - DB_NAME=sitefilter

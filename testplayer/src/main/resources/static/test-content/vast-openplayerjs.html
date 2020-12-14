@@ -1,0 +1,170 @@
+<html>
+<head>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/openplayerjs@latest/dist/openplayer.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/openplayerjs@latest/dist/openplayer.js"></script>
+
+        <style>
+            #container {
+                width: 640px;
+                height: 385px;
+                position: relative;
+            }
+            #player {
+                width: 640px;
+                height: 385px;
+                position: relative;
+            }
+        </style>
+    </head>
+</head>
+
+<body  style="margin: 0;">
+
+<div id="container">
+    <video class="op-player__media" id="player" controls playsinline autoplay>
+<!--        <source src="//cdn3.viblast.com/streams/hls/airshow/playlist.m3u8" type='application/x-mpegURL'>-->
+
+<!--        <track kind="subtitles" src="/path/to/video.vtt" srclang="en" label="English">-->
+    </video>
+
+</div>
+
+
+<script>
+    // Check the `API and events` link below for more options
+
+
+
+    /**
+     *
+     * @param VASTPlayer
+     * @param {VastParam} param
+     */
+    function create(VASTPlayer, param) {
+        const playerContainer = document.getElementById('container');
+
+        const player = new OpenPlayerJS('player', {
+            ads: {
+                src: ['https://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=is&c=23&pl=VAST&pli=14432293&PluID=0&pos=8834&ord=%5Btimestamp%5D&cim=1', 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=',]
+                // src: param.vastTag
+            }
+        });
+
+        // const player = new OpenPlayerJS('player');
+
+        player.autoplay = true;
+
+        player.ads.autoStart = true;
+        console.log(param.width)
+        console.log(param.height)
+
+        playerContainer.style.width = param.width + "px";
+        playerContainer.style.height = param.height + "px";
+
+        // player.once('AdStopped', function () {
+        //     console.log('Ad finished playback!');
+        //     parent.postMessage(new VpaidEvent("AdStopped", null), "*")
+        // });
+
+        player.getElement().addEventListener('adscomplete', function() {
+            console.log('!!!!!!!!!!!!!Your code when media ends playing');
+            // parent.postMessage(new VpaidEvent("AdStopped", null), "*")
+        });
+
+        player.getElement().addEventListener('adsloaded', function() {
+            console.log('!!!!!!!!!!!!!adsloaded');
+            player.adsInstance.play();
+            // debugger
+        });
+
+        player.getElement().addEventListener('adsDone', function() {
+            console.log('!!!!!!!!!!!!!adsDone');
+            player.adsInstance.play();
+            // debugger
+        });
+
+
+        // var event = new CustomEvent('adscomplete');
+        // player.getElement().dispatchEvent(event);
+
+        player.init();
+
+        console.log(player)
+        // debugger
+
+        // player.play();
+
+
+        // player.load(
+        //     param.vastTag,
+        // ).then(() => {
+        //
+        // }).catch(function (reason) {
+        //     setTimeout(function () {
+        //         throw reason;
+        //     }, 0);
+        // });
+
+    }
+
+
+    function listener(event) {
+        if (event.origin !== 'http://localhost:8080') {
+            // что-то прислали с неизвестного домена - проигнорируем..
+            console.log("origin not found " + event.data);
+            return;
+        }
+        console.log("getting ");
+        console.log(event.data);
+
+        const vpaidEvent = event.data;
+
+        switch (vpaidEvent.type) {
+            case "create":
+                create(window.VASTPlayer, vpaidEvent.params);
+                break;
+            case "startAd":
+                startAd(vpaidEvent.params);
+                break;
+
+        }
+
+        console.log("getting ");
+        console.log(event.data);
+    }
+
+
+    function startAd() {
+
+    }
+
+    console.log("addEventListener ");
+    if (window.addEventListener) {
+        window.addEventListener("message", listener, false);
+    } else {
+        // IE8
+        window.attachEvent("onmessage", listener);
+    }
+
+    class VpaidEvent {
+        type; //Type event (for switch)
+        params; // Params event. May be different
+
+
+        constructor(type, params) {
+            this.type = type;
+            this.params = params;
+        }
+    }
+
+    class VastParam {
+        vastTag;
+        width;
+        height;
+    }
+
+</script>
+
+</body>
+</html>

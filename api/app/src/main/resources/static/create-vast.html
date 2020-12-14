@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create vast</title>
+</head>
+<body>
+<form method="post">
+    <div><label>Company Name <input type="text" id="companyName" style="width: 600px;"></label></div>
+    <div><label>Vast tag <input type="text" id="vastTag" style="width: 600px;"></label></div>
+    <div><label>Min width (in px) <input type="number" id="minWidth"></label></div>
+    <div><label>Min height (in px) <input type="number" id="minHeight"></label></div>
+
+    <button type="button" onclick="sendCreateVastRequest()">Create vast</button>
+</form>
+
+<h4>Result file name: <a id="resultFileName"></a></h4>
+
+<script>
+    function sendCreateVastRequest() {
+        let companyName = document.getElementById('companyName').value;
+        let vastTag = document.getElementById('vastTag').value;
+        let minWidth = document.getElementById('minWidth').value;
+        let minHeight = document.getElementById('minHeight').value;
+
+        let resultFileName = document.getElementById('resultFileName');
+
+        let request = {
+            companyName,
+            vastTag,
+            minHeight,
+            minWidth
+        };
+
+        let http = new XMLHttpRequest();
+        // let url = 'http://localhost:8080/api/vast';
+        let url = document.location.origin + '/api/vast';
+        http.open('POST', url, true);
+
+        http.setRequestHeader("Content-Type", "application/json");
+
+        http.onreadystatechange = function () {
+            if (http.readyState === 4 && http.status === 200) {
+                let json = JSON.parse(http.responseText);
+                resultFileName.textContent = json.fileName;
+                resultFileName.href = json.fileName;
+            }
+        };
+
+        let jsonBody = JSON.stringify(request);
+
+        http.send(jsonBody);
+    }
+</script>
+</body>
+</html>

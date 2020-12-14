@@ -1,0 +1,66 @@
+<div class="content-heading">
+    <div>
+        <span translate>Profile</span>
+    </div>
+</div>
+
+<div class="alert alert-danger" role="alert" *ngIf="!user.accountFilled">
+    <span class="align-self-start mr-2">
+         <span class="fa-stack">
+            <em class="fa fa-circle fa-stack-2x"></em>
+            <em class="fa fa-exclamation fa-stack-1x text-danger"></em>
+         </span>
+    </span>
+    <strong translate>To continue you have to fill in the required fields: "Name" and "Country"</strong>
+</div>
+
+<div class="card card-default">
+    <div class="card-header d-flex">
+        <div class="h3 col" translate>Details</div>
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-primary m-2" (click)="openUpdateAccountModal()" translate>Change details</button>
+            <button class="btn btn-primary m-2" (click)="openChangePasswordModal()" translate>Change password</button>
+        </div>
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-3 text-right">
+                <label class="text-bold" translate>Name</label>
+            </div>
+            <div class="col-9">
+                <p>{{(currentUser$ | async).name}}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3 text-right">
+                <label class="text-bold text-right" translate>E-mail</label>
+            </div>
+            <div class="col-9">
+                <p>{{(currentUser$ | async).email}}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3 text-right">
+                <label class="text-bold text-right" translate>Country</label>
+            </div>
+            <div class="col-9">
+                <p *ngIf="userCountry">{{userCountry.title}}</p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-3 text-right">
+                <label class="text-bold text-right" translate>Registration date</label>
+            </div>
+            <div class="col-9">
+                <p>{{(currentUser$ | async).createdAt  | date:'dd.MM.yyyy'}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+

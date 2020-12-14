@@ -1,0 +1,627 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+msgid "(english input is expected)"
+msgstr ""
+
+msgid "*"
+msgstr "*"
+
+msgid "Academic degree"
+msgstr "Учёная степень"
+
+msgid "Accept"
+msgstr "Принять"
+
+msgid "Account"
+msgstr "Аккаунт"
+
+msgid "Active"
+msgstr "Активные"
+
+msgid "Active calls"
+msgstr "Активные конкурсы"
+
+msgid "Add"
+msgstr "Добавить"
+
+#, fuzzy
+#| msgid "Add costs type"
+msgid "Add cost type"
+msgstr "Добавить статью расходов"
+
+msgid "Add funding organization"
+msgstr "Добавить финансирующую организацию"
+
+msgid "Add publication"
+msgstr "Добавить публикацию"
+
+msgid "Add representative"
+msgstr "Добавить представителя"
+
+msgid "Add subject"
+msgstr "Добавить направление"
+
+msgid "Add user"
+msgstr "Добавить пользователя"
+
+msgid "Amount"
+msgstr "Объем финансирования"
+
+msgid "Announcements"
+msgstr "Анонсированные"
+
+msgid "Applicants details"
+msgstr "Информация о заявителях"
+
+msgid "Applications grading"
+msgstr "Оценка заявок"
+
+msgid "Archived"
+msgstr "Архив"
+
+msgid "Are you sure you want to delete the expense type?"
+msgstr "Вы уверены, что хотите удалить тип расходов?"
+
+msgid "Are you sure you want to delete the subject?"
+msgstr "Вы уверены, что хотите удалить тему?"
+
+msgid "Are you sure you want to remove $name from the application?"
+msgstr "Вы уверены что хотите удалить пользователя $name из заявки?"
+
+msgid "Attached files"
+msgstr "Прикреплённые файлы"
+
+msgid "Back home"
+msgstr "На главную"
+
+msgid "Birth date"
+msgstr "Дата рождения"
+
+msgid "Call ID"
+msgstr "Шифр лота"
+
+msgid "Call has been successfully published"
+msgstr "Конкурс успешно опубликован"
+
+msgid "Call terms page"
+msgstr "Страница с условиями конкурса"
+
+msgid "Call title"
+msgstr "Название конкурса"
+
+msgid "Call updated"
+msgstr "Конкурс обновлён"
+
+msgid "Call with this ID already exists"
+msgstr "Конкурс с таким шифром уже существует"
+
+msgid "Calls"
+msgstr "Конкурсы"
+
+msgid "Calls not found"
+msgstr "Конкурсы не найдены"
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Change"
+msgstr "Изменить"
+
+msgid "Change description"
+msgstr "Изменить описание"
+
+msgid "Change details"
+msgstr "Изменить информацию"
+
+msgid "Change password"
+msgstr "Сменить пароль"
+
+msgid "Change profile details"
+msgstr "Изменить данные профиля"
+
+msgid "Characters left"
+msgstr "Символов осталось"
+
+msgid "Choose a priority area"
+msgstr "Выберите направление исследований"
+
+msgid "Choose project duration between 12 and 36 months"
+msgstr "Выберите продолжительность проекта в диапазоне от 12 до 36 месяцев"
+
+msgid "Clear all"
+msgstr "Очистить все"
+
+msgid "Confirm"
+msgstr "Подтвердить"
+
+msgid "Confirmation"
+msgstr "Подтверждение"
+
+msgid "Contact information"
+msgstr "Контактная информация"
+
+msgid "Costs"
+msgstr "Расходы"
+
+msgid "Costs justification"
+msgstr "Обоснование расходов"
+
+msgid "Costs types"
+msgstr "Виды расходов"
+
+msgid "Country"
+msgstr "Страна"
+
+msgid "Create a call"
+msgstr "Создать конкурс"
+
+msgid "The date precedes 'Eligibility check deadline'"
+msgstr "Указана дата предшествующая 'Срок окончания технической экспертизы'"
+
+msgid "Date must be later than date 'Evaluation deadline'"
+msgstr "Указана дата предшествующая 'Срок завершения экспертизы'"
+
+msgid "Date must be later than date 'Proposal submission deadline'"
+msgstr "Указана дата предшествующая 'Срок окончания подачи заявок'"
+
+msgid "Date must be later than date 'Proposal submission start'"
+msgstr "Указана дата предшествующая 'Начало подачи заявок'"
+
+msgid "Date must be later than date \\'Eligibility check deadline\\'"
+msgstr "Указана дата предшествующая \\'Срок окончания технической экспертизы\\'"
+
+msgid "Date must be later than date \\'Proposal submission deadline\\'"
+msgstr "Указана дата предшествующая \\'Срок окончания подачи заявок\\'"
+
+msgid "Date must be later than date \\'Proposal submission start\\'"
+msgstr "Указана дата предшествующая \\'Начало подачи заявок\\'"
+
+msgid "The date is in the past"
+msgstr "Дата указана в прошлом"
+
+msgid "Decline"
+msgstr "Отклонить"
+
+msgid "Delete confirmation"
+msgstr "Подтверждение удаления"
+
+msgid "Details"
+msgstr "Подробная информация"
+
+msgid "Developed by Gramant"
+msgstr "Разработано в Граманте"
+
+msgid "Download pdf with the contest's applications"
+msgstr "Скачать pdf с заявками конкурса"
+
+msgid "Download pdf with the proposals submitted to the call"
+msgstr "Скачать pdf с конкурсными заявками"
+
+msgid "E-mail"
+msgstr "E-mail"
+
+msgid "E-mail is invalid"
+msgstr "E-mail недействителен"
+
+msgid "Eligibility check deadline"
+msgstr "Срок окончания технической экспертизы"
+
+#, fuzzy
+#| msgid "E-mail"
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Enter and confirm your new password"
+msgstr "Введите и подтвердите новый пароль"
+
+msgid "Evaluation deadline"
+msgstr "Срок завершения экспертизы"
+
+msgid "Expenses"
+msgstr "Затраты"
+
+msgid "Female"
+msgstr "Женский"
+
+msgid "File of the wrong type"
+msgstr "Файл неверного типа"
+
+msgid "Financial plan"
+msgstr "Финансовый план"
+
+msgid "First name"
+msgstr "Имя"
+
+msgid "First name, Last name"
+msgstr "Имя, Фамилия"
+
+msgid "Forbidden"
+msgstr "Недоступно"
+
+msgid "Funders"
+msgstr "Спонсоры"
+
+msgid "Funding organisation with the same name already exists"
+msgstr "Финансирующая организация с таким названием уже существует"
+
+msgid "Funding organisations"
+msgstr "Финансирующие организации"
+
+msgid "Funding organization"
+msgstr "Финансирующая организация"
+
+msgid "Funding organization added successfully"
+msgstr "Финансирующая организация успешно добавлена"
+
+msgid "Funding organization representative added successfully"
+msgstr "Представитель финансирующего организации успешно добавлен"
+
+msgid "Gender"
+msgstr "Пол"
+
+msgid "General information"
+msgstr "Общая информация"
+
+msgid "Guidelines"
+msgstr "Руководство"
+
+msgid "Invalid URL"
+msgstr "Некорректный URL"
+
+msgid "Invite"
+msgstr "Пригласить"
+
+msgid "Invite a partner"
+msgstr "Пригласить партнёра"
+
+msgid "Invite administrator"
+msgstr "Пригласить администратора"
+
+msgid "Invite new funder representative"
+msgstr "Добавить представителя"
+
+msgid "Invite partners"
+msgstr "Пригласить партнеров"
+
+msgid "It is currently not possible to vote on the contest"
+msgstr "В данный момент голосовать по конкурс не возможно"
+
+msgid "Joined"
+msgstr "Присоединился"
+
+msgid "Last name"
+msgstr "Фамилия"
+
+msgid "Legal address"
+msgstr "Официальный адрес"
+
+msgid "Loading..."
+msgstr "Загружается..."
+
+msgid "Logout"
+msgstr "Выйти"
+
+msgid "Male"
+msgstr "Мужской"
+
+msgid "Manage funding organisations"
+msgstr "Управление финансирующими организациями"
+
+msgid "Manage users"
+msgstr "Управление пользователями"
+
+msgid "Maximum characters"
+msgstr "Максимально символов"
+
+msgid "Maximum number of characters exceeded"
+msgstr "Максимальное количество символов превышено"
+
+msgid "Middle name"
+msgstr "Отчество"
+
+msgid "Milestones"
+msgstr "Основные даты"
+
+msgid ""
+"Minimum eight characters, at least one uppercase letter, one lowercase "
+"letter and one number"
+msgstr ""
+"Минимум восемь символов, минимум одна заглавная буква, одна строчная буква и "
+"одна цифра"
+
+msgid "Missing"
+msgstr "Не найдено"
+
+msgid "My proposals"
+msgstr "Мои заявки"
+
+msgid "Name"
+msgstr "Название"
+
+msgid "New Administrator"
+msgstr "Пригласить администратора"
+
+msgid "New call"
+msgstr "Новый конкурс"
+
+msgid "New funding organisation"
+msgstr "Новая финансирующая организация"
+
+msgid "New proposal"
+msgstr "Новая заявка"
+
+msgid "No active calls"
+msgstr "Нет активных конкурсов"
+
+msgid "No calls announced"
+msgstr "Нет аннонсированных конкурсов"
+
+msgid "No files"
+msgstr "Файлы отсутствуют"
+
+msgid "No items found"
+msgstr "Ничего не найдено"
+
+msgid "No proposals for ongoing calls created yet"
+msgstr "Не создано заявок на проходящие в данный момент конкурсы"
+
+msgid "Only the coordinator is able to submit the proposal"
+msgstr "Только координатор может подать заявку"
+
+msgid "Organisation"
+msgstr "Организация"
+
+msgid "Organization full name"
+msgstr "Полное название организации"
+
+msgid "Organization short name"
+msgstr "Сокращенное название организации"
+
+msgid "Organization type"
+msgstr "Тип организации"
+
+msgid "Partner invitation"
+msgstr "Приглашение партнера"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Password is too simple"
+msgstr "Пароль слишком простой"
+
+msgid "Password was successfully updated"
+msgstr "Пароль успешно обновлен"
+
+msgid "Passwords don't match"
+msgstr "Введённые пароли не совпадают"
+
+msgid "Phone"
+msgstr "Телефон"
+
+msgid "Please confirm call publication"
+msgstr "Подтвердите публикацию конкурса"
+
+msgid "Please confirm contact person removal from the call"
+msgstr "Подтвердите удаление контактного лица из конкурса"
+
+msgid "Please confirm funder removal from the call"
+msgstr "Подтвердите удаление из конкурса финансирующей организации"
+
+msgid "Please describe the project"
+msgstr "Опишите проект"
+
+msgid "Please enter email"
+msgstr "Укажите email"
+
+msgid "Please explain the role and input of each partner in the project"
+msgstr "Объясните роль и вклад каждого партнёра в проекте"
+
+msgid "Priority areas"
+msgstr "Направления исследований"
+
+msgid "Profile"
+msgstr "Профиль"
+
+msgid "Profile was successfully updated"
+msgstr "Профиль успешно обновлен"
+
+msgid "Project acronym"
+msgstr "Акроним проекта"
+
+msgid "Project duration"
+msgstr "Продолжительность проекта"
+
+msgid "Project partners"
+msgstr "Партнёры проекта"
+
+msgid "Project summary"
+msgstr "Краткая информация о проекте"
+
+msgid "Project title"
+msgstr "Название проекта"
+
+msgid "Proposal"
+msgstr "Заявка"
+
+msgid "Proposal submission"
+msgstr "Подача заявки"
+
+msgid "Proposal submission deadline"
+msgstr "Дата должна быть позже даты 'Срок окончания подачи заявок' "
+
+msgid "Proposal submission guidelines"
+msgstr "Руководство по подаче заявки"
+
+msgid "Proposal submission start"
+msgstr "Начало подачи заявок"
+
+msgid "Proposal with this acronym was already submitted to the call"
+msgstr "Заявка с таким акронимом уже была подана на данный конкурс"
+
+msgid "Proposals not found"
+msgstr "Заявки не найдены"
+
+msgid "Proposals review"
+msgstr "Рассмотрение заявок"
+
+msgid "Publication"
+msgstr "Публикация"
+
+msgid "Publications"
+msgstr "Публикации"
+
+msgid "Registration date"
+msgstr "Дата регистрации"
+
+msgid "Repeat password"
+msgstr "Повторите пароль"
+
+msgid "Required field"
+msgstr "Обязательное поле"
+
+msgid "Reset"
+msgstr "Сброс"
+
+msgid "Roles"
+msgstr "Роли"
+
+msgid "Save"
+msgstr "Сохранить"
+
+msgid "Save and publish"
+msgstr "Сохранить и опубликовать"
+
+msgid "Select country"
+msgstr "Выберите страну"
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "Status set successfully"
+msgstr "Статус установлен успешно"
+
+msgid "Submit"
+msgstr "Подать"
+
+msgid "Submit proposal"
+msgstr "Отправить заявку"
+
+msgid "The page you are looking for does not exists"
+msgstr "Страница, которую вы ищете, не существует"
+
+msgid "The partner was successfully deleted"
+msgstr "Партнер был успешно удален"
+
+msgid "The partner was successfully invited"
+msgstr "Приглашение партнеру успешно отправлено"
+
+msgid "The proposal submission failed. The following problems were found"
+msgstr "Не удалось подать заявку. Обнаружены следующие проблемы"
+
+msgid "The proposal was sent successfully"
+msgstr "Заявка была подана успешно"
+
+msgid "Title"
+msgstr "Название"
+
+msgid ""
+"To continue you have to fill in the required fields: \"Name\" and \"Country\""
+msgstr ""
+"Чтобы продолжить, необходимо заполнить обязательные поля: «Имя» и «Страна»"
+
+msgid "To proposals grading"
+msgstr "К оценкам заявок"
+
+msgid "To proposals voting"
+msgstr "К голосам по заявкам"
+
+msgid "Type"
+msgstr "Тип"
+
+msgid "Type to search"
+msgstr "Введите для поиска"
+
+msgid "Unit name"
+msgstr "Название подразделения"
+
+msgid "Upload file"
+msgstr "Загрузить файл"
+
+msgid "Users"
+msgstr "Пользователи"
+
+msgid "Winner announcement"
+msgstr "Объявление победителя"
+
+msgid "Work packages summary"
+msgstr "Краткое описание рабочих пакетов"
+
+msgid "Work plan"
+msgstr "План работ"
+
+msgid "Wrong project status"
+msgstr "Неверный статус проекта"
+
+msgid "Year"
+msgstr "Год"
+
+msgid "costs"
+msgstr "расходы"
+
+msgid "file.delete.success"
+msgstr "Файл был удалён"
+
+msgid "file.upload.success"
+msgstr "Файл был загружен"
+
+msgid "locale"
+msgstr "ru"
+
+msgid "password"
+msgstr "пароль"
+
+msgid "proposal.deleteFile.confirmMessage"
+msgstr "Вы уверены что хотите удалить файл $name из заявки?"
+
+msgid "toaster.body.error.forbidden"
+msgstr "Отказано в доступе"
+
+msgid "toaster.body.error.unknown"
+msgstr "Неизвестная ошибка"
+
+msgid "toaster.title.error"
+msgstr "Ошибка"
+
+msgid "toaster.title.success"
+msgstr "Успешно"
+
+msgid "years"
+msgstr "лет"
+
+#~ msgid "Proposals"
+#~ msgstr "Заявки"
+
+#~ msgid "Proposals grading"
+#~ msgstr "Экспертиза заявок"
+
+#~ msgid "Call is already published"
+#~ msgstr "Конкурс уже опубликован"
+
+#~ msgid "Invalid email"
+#~ msgstr "Некорректный email"
+
+#~ msgid "Invite new representative of the funding organisation"
+#~ msgstr "Пригласить нового представителя финансирующей организации"

@@ -1,0 +1,595 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "(english input is expected)"
+msgstr ""
+
+msgid "*"
+msgstr ""
+
+msgid "Academic degree"
+msgstr ""
+
+msgid "Accept"
+msgstr ""
+
+msgid "Account"
+msgstr ""
+
+msgid "Active"
+msgstr ""
+
+msgid "Active calls"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Add cost type"
+msgstr ""
+
+msgid "Add funding organization"
+msgstr ""
+
+msgid "Add publication"
+msgstr ""
+
+msgid "Add representative"
+msgstr ""
+
+msgid "Add subject"
+msgstr ""
+
+msgid "Add user"
+msgstr ""
+
+msgid "Amount"
+msgstr ""
+
+msgid "Announcements"
+msgstr ""
+
+msgid "Applicants details"
+msgstr ""
+
+msgid "Applications grading"
+msgstr ""
+
+msgid "Archived"
+msgstr ""
+
+msgid "Are you sure you want to delete the expense type?"
+msgstr ""
+
+msgid "Are you sure you want to delete the subject?"
+msgstr ""
+
+msgid "Are you sure you want to remove $name from the application?"
+msgstr ""
+
+msgid "Attached files"
+msgstr ""
+
+msgid "Back home"
+msgstr ""
+
+msgid "Birth date"
+msgstr ""
+
+msgid "Call ID"
+msgstr ""
+
+msgid "Call has been successfully published"
+msgstr ""
+
+msgid "Call terms page"
+msgstr ""
+
+msgid "Call title"
+msgstr ""
+
+msgid "Call updated"
+msgstr ""
+
+msgid "Call with this ID already exists"
+msgstr ""
+
+msgid "Calls"
+msgstr ""
+
+msgid "Calls not found"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Change"
+msgstr ""
+
+msgid "Change description"
+msgstr ""
+
+msgid "Change details"
+msgstr ""
+
+msgid "Change password"
+msgstr ""
+
+msgid "Change profile details"
+msgstr ""
+
+msgid "Characters left"
+msgstr ""
+
+msgid "Choose a priority area"
+msgstr ""
+
+msgid "Choose project duration between 12 and 36 months"
+msgstr ""
+
+msgid "Clear all"
+msgstr ""
+
+msgid "Confirm"
+msgstr ""
+
+msgid "Confirmation"
+msgstr ""
+
+msgid "Contact information"
+msgstr ""
+
+msgid "Costs"
+msgstr ""
+
+msgid "Costs justification"
+msgstr ""
+
+msgid "Costs types"
+msgstr ""
+
+msgid "Country"
+msgstr ""
+
+msgid "Create a call"
+msgstr ""
+
+msgid "The date precedes 'Eligibility check deadline'"
+msgstr ""
+
+msgid "The date precedes 'Evaluation deadline'"
+msgstr ""
+
+msgid "The date precedes 'Proposal submission deadline'"
+msgstr ""
+
+msgid "The date precedes 'Proposal submission start'"
+msgstr ""
+
+msgid "The date precedes \\'Eligibility check deadline\\'"
+msgstr ""
+
+msgid "The date precedes \\'Proposal submission deadline\\'"
+msgstr ""
+
+msgid "The date precedes \\'Proposal submission start\\'"
+msgstr ""
+
+msgid "The date is in the past"
+msgstr ""
+
+msgid "Decline"
+msgstr ""
+
+msgid "Delete confirmation"
+msgstr ""
+
+msgid "Details"
+msgstr ""
+
+msgid "Developed by Gramant"
+msgstr ""
+
+msgid "Download pdf with the contest's applications"
+msgstr ""
+
+msgid "Download pdf with the proposals submitted to the call"
+msgstr ""
+
+msgid "E-mail"
+msgstr ""
+
+msgid "E-mail is invalid"
+msgstr ""
+
+msgid "Eligibility check deadline"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "Enter and confirm your new password"
+msgstr ""
+
+msgid "Evaluation deadline"
+msgstr ""
+
+msgid "Expenses"
+msgstr ""
+
+msgid "Female"
+msgstr ""
+
+msgid "File of the wrong type"
+msgstr ""
+
+msgid "Financial plan"
+msgstr ""
+
+msgid "First name"
+msgstr ""
+
+msgid "First name, Last name"
+msgstr ""
+
+msgid "Forbidden"
+msgstr ""
+
+msgid "Funders"
+msgstr ""
+
+msgid "Funding organisation with the same name already exists"
+msgstr ""
+
+msgid "Funding organisations"
+msgstr ""
+
+msgid "Funding organization"
+msgstr ""
+
+msgid "Funding organization added successfully"
+msgstr ""
+
+msgid "Funding organization representative added successfully"
+msgstr ""
+
+msgid "Gender"
+msgstr ""
+
+msgid "General information"
+msgstr ""
+
+msgid "Guidelines"
+msgstr ""
+
+msgid "Invalid URL"
+msgstr ""
+
+msgid "Invite"
+msgstr ""
+
+msgid "Invite a partner"
+msgstr ""
+
+msgid "Invite administrator"
+msgstr ""
+
+msgid "Invite new funder representative"
+msgstr ""
+
+msgid "Invite partners"
+msgstr ""
+
+msgid "It is currently not possible to vote on the contest"
+msgstr ""
+
+msgid "Joined"
+msgstr ""
+
+msgid "Last name"
+msgstr ""
+
+msgid "Legal address"
+msgstr ""
+
+msgid "Loading..."
+msgstr ""
+
+msgid "Logout"
+msgstr ""
+
+msgid "Male"
+msgstr ""
+
+msgid "Manage funding organisations"
+msgstr ""
+
+msgid "Manage users"
+msgstr ""
+
+msgid "Maximum characters"
+msgstr ""
+
+msgid "Maximum number of characters exceeded"
+msgstr ""
+
+msgid "Middle name"
+msgstr ""
+
+msgid "Milestones"
+msgstr ""
+
+msgid ""
+"Minimum eight characters, at least one uppercase letter, one lowercase "
+"letter and one number"
+msgstr ""
+
+msgid "Missing"
+msgstr ""
+
+msgid "My proposals"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "New Administrator"
+msgstr ""
+
+msgid "New call"
+msgstr ""
+
+msgid "New funding organisation"
+msgstr ""
+
+msgid "New proposal"
+msgstr ""
+
+msgid "No active calls"
+msgstr ""
+
+msgid "No calls announced"
+msgstr ""
+
+msgid "No files"
+msgstr ""
+
+msgid "No items found"
+msgstr ""
+
+msgid "No proposals for ongoing calls created yet"
+msgstr ""
+
+msgid "Only the coordinator is able to submit the proposal"
+msgstr ""
+
+msgid "Organisation"
+msgstr ""
+
+msgid "Organization full name"
+msgstr ""
+
+msgid "Organization short name"
+msgstr ""
+
+msgid "Organization type"
+msgstr ""
+
+msgid "Partner invitation"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Password is too simple"
+msgstr ""
+
+msgid "Password was successfully updated"
+msgstr ""
+
+msgid "Passwords don't match"
+msgstr ""
+
+msgid "Phone"
+msgstr ""
+
+msgid "Please confirm call publication"
+msgstr ""
+
+msgid "Please confirm contact person removal from the call"
+msgstr ""
+
+msgid "Please confirm funder removal from the call"
+msgstr ""
+
+msgid "Please describe the project"
+msgstr ""
+
+msgid "Please enter email"
+msgstr ""
+
+msgid "Please explain the role and input of each partner in the project"
+msgstr ""
+
+msgid "Priority areas"
+msgstr ""
+
+msgid "Profile"
+msgstr ""
+
+msgid "Profile was successfully updated"
+msgstr ""
+
+msgid "Project acronym"
+msgstr ""
+
+msgid "Project duration"
+msgstr ""
+
+msgid "Project partners"
+msgstr ""
+
+msgid "Project summary"
+msgstr ""
+
+msgid "Project title"
+msgstr ""
+
+msgid "Proposal"
+msgstr ""
+
+msgid "Proposal submission"
+msgstr ""
+
+msgid "Proposal submission deadline"
+msgstr ""
+
+msgid "Proposal submission guidelines"
+msgstr ""
+
+msgid "Proposal submission start"
+msgstr ""
+
+msgid "Proposal with this acronym was already submitted to the call"
+msgstr ""
+
+msgid "Proposals not found"
+msgstr ""
+
+msgid "Proposals review"
+msgstr ""
+
+msgid "Publication"
+msgstr ""
+
+msgid "Publications"
+msgstr ""
+
+msgid "Registration date"
+msgstr ""
+
+msgid "Repeat password"
+msgstr ""
+
+msgid "Required field"
+msgstr ""
+
+msgid "Reset"
+msgstr ""
+
+msgid "Roles"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Save and publish"
+msgstr ""
+
+msgid "Select country"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Status set successfully"
+msgstr ""
+
+msgid "Submit"
+msgstr ""
+
+msgid "Submit proposal"
+msgstr ""
+
+msgid "The page you are looking for does not exists"
+msgstr ""
+
+msgid "The partner was successfully deleted"
+msgstr ""
+
+msgid "The partner was successfully invited"
+msgstr ""
+
+msgid "The proposal submission failed. The following problems were found"
+msgstr ""
+
+msgid "The proposal was sent successfully"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "To continue you have to fill in the required fields: \"Name\" and \"Country\""
+msgstr ""
+
+msgid "To proposals grading"
+msgstr ""
+
+msgid "To proposals voting"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Type to search"
+msgstr ""
+
+msgid "Unit name"
+msgstr ""
+
+msgid "Upload file"
+msgstr ""
+
+msgid "Users"
+msgstr ""
+
+msgid "Winner announcement"
+msgstr ""
+
+msgid "Work packages summary"
+msgstr ""
+
+msgid "Work plan"
+msgstr ""
+
+msgid "Wrong project status"
+msgstr ""
+
+msgid "Year"
+msgstr ""
+
+msgid "costs"
+msgstr ""
+
+msgid "file.delete.success"
+msgstr ""
+
+msgid "file.upload.success"
+msgstr ""
+
+msgid "locale"
+msgstr ""
+
+msgid "password"
+msgstr ""
+
+msgid "proposal.deleteFile.confirmMessage"
+msgstr ""
+
+msgid "toaster.body.error.forbidden"
+msgstr ""
+
+msgid "toaster.body.error.unknown"
+msgstr ""
+
+msgid "toaster.title.error"
+msgstr ""
+
+msgid "toaster.title.success"
+msgstr ""
+
+msgid "years"
+msgstr ""

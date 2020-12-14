@@ -1,0 +1,22 @@
+app:
+  allowedOrigins: http://localhost:4200
+  baseUrl: http://localhost:8080
+  vast-dir: /tmp/vast_file/
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:54321/sitefilter
+    username: sitefilter_admin
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+logging:
+  file:
+    path: ./
+  level:
+    org.jooq: DEBUG
+    com.gramant.sitefilter: DEBUG
+  pattern:
+    console: '%d{HH:mm:ss.SSS} [%thread] [%X] %-5level %logger{36} - %msg%n'
+
+

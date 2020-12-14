@@ -1,0 +1,37 @@
+@import "../../../shared/styles/bootstrap/_functions.scss";
+@import "../../../shared/styles/bootstrap/_variables.scss";
+@import "../../../shared/styles/bootstrap/_mixins";
+//@import '../../../shared/styles/app/variables.scss';
+
+.items-container {
+    white-space: nowrap;
+}
+
+.item-add {
+  display: inline-block;
+  float: left;
+  margin-left: 3px;
+  padding: 7px 0px 5px;
+
+  .btn-group {
+    height: 17px;
+  }
+
+  .add-button {
+    position: absolute;
+    top: -12%;
+    height: 20px;
+    white-space: nowrap;
+  }
+}
+
+a.no-items {
+  color: rgba(255, 82, 82, 0.85);
+}
+a.no-items:hover {
+  color: #f05050;
+}
+
+a:hover {
+  text-decoration: none;
+}

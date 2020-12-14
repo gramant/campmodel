@@ -1,0 +1,22 @@
+<html>
+<head>
+    <script src="http://localhost:8080/jwplayer/jwplayer.js"></script>
+
+    <script src="omid/omid-verification-client-v1.js"></script>
+    <script src="omid/omid-validation-verification-script-v1.js"></script>
+    <script src="test-content/omid/your-verification-script.js"></script>
+</head>
+<body>
+<div id="myElement"></div>
+
+<script type="text/JavaScript">
+    jwplayer("myElement").setup({
+        "file": "https://medias.presage.io/medias/videos/92ad95b7-5b02-4706-8160-fe4fcce9aa66.mp4-transcoded/offline.mp4",
+        "advertising": {
+            "client": "vast",
+            "tag": "http://localhost:8080/vast4-sample1.xml"
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<div class="gray-bg">
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div>
+            <div class="row">
+
+                <img class="col-12" style="width: 100%; height: 100%;"
+                     src="/assets/images/sspright-logos_transparent.png">
+
+            </div>
+            <p>Login in.</p>
+            <form class="m-t" autocomplete="off" [formGroup]="loginForm" (submit)="submitForm()">
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="email" formControlName="email"
+                           [ngClass]="{'is-invalid': getControl('email').invalid && getControl('email').touched}"/>
+
+                    <ng-container *ngIf="getControl('email').invalid && getControl('email').touched">
+                        <div class="text-danger"
+                             *ngIf="getControl('email').errors.required">
+                            Required field
+                        </div>
+                        <div class="text-danger"
+                             *ngIf="getControl('email').errors.email">
+                            Invalid email
+                        </div>
+                    </ng-container>
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control border-right-0" type="password"
+                           formControlName="password"
+                           placeholder="password"
+                           [ngClass]="{'is-invalid': getControl('password').invalid && getControl('password').touched}"/>
+
+                    <ng-container *ngIf="getControl('password').invalid && getControl('password').touched">
+                        <div class="text-danger"
+                             *ngIf="getControl('password').errors.required">
+                            Required field
+                        </div>
+                    </ng-container>
+                </div>
+
+                <button type="submit" class="btn btn-primary block full-width m-b" translate>Login</button>
+
+                <div class="float-right">
+                    <a class="text-muted" [routerLink]="['/password']">Recover password</a>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

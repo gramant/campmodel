@@ -1,0 +1,78 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title" translate>Change profile details</h4>
+    </div>
+    <div class="modal-body">
+
+        <form class="form-horizontal mt-md-2" [formGroup]="updateForm" (submit)="submitRequest()">
+            <div class="form-group row">
+                <div class="col-4 text-right">
+                    <label class="text-bold col-form-label" translate>Name</label>
+                </div>
+
+                <div class="col-8">
+                    <input formControlName="name" type="text" class="form-control"
+                           [ngClass]="{'is-invalid': getControl('name').invalid && getControl('name').touched}"/>
+                    <div class="invalid-feedback" *ngIf="getControl('name').invalid && getControl('name').touched">
+                        <span class="text-danger" *ngIf="getControl('name').errors.required">Required field</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row" *ngIf="!user.accountFilled">
+                <div class="col-4 text-right">
+                    <label class="text-bold col-form-label" translate>Country</label>
+                </div>
+
+                <div class="col-8" >
+                    <ng-select class="m-t-xs placeholder-m-3 no-padding"
+                               formControlName="countryCode"
+                               bindLabel="title"
+                               [typeToSearchText]="'Type to search'"
+                               [notFoundText]="'No items found'"
+                               [loadingText]="'Loading...'"
+                               [clearAllText]="'Clear all'"
+                               [placeholder]="'Select country'"
+                               [addTag]="false"
+                               [multiple]="false"
+                               [hideSelected]="true"
+                               [clearable]="false"
+                               [ngClass]="{'is-invalid': getControl('countryCode').invalid && getControl('countryCode').touched}"
+                    >
+                        <ng-option
+                            *ngFor="let country of countries "
+                            [value]="country.code">
+                            {{ country.title }}
+                        </ng-option>
+
+                        <div class="invalid-feedback"
+                             *ngIf="getControl('countryCode').invalid && getControl('countryCode').touched">
+                        <span class="text-danger"
+                              *ngIf="getControl('countryCode').errors.required" translate>Required field</span>
+                        </div>
+                    </ng-select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-8">
+                    <span class="text-danger"
+                          *ngIf="accountUpdateRequestStat.isRequestFailed">{{accountUpdateRequestStat.isRequestFailed}}</span>
+                </div>
+            </div>
+
+            <div class="mt-5 row">
+                <div class="col-12 text-right">
+                    <button type="button" class="btn btn-secondary"
+                            (click)="close()">
+                        <i class="fa fa-ban"></i>&nbsp;&nbsp;
+                        <span translate>Cancel</span>
+                    </button>
+                    <button type="submit" class="btn btn-primary ml-2"
+                            [disabled]="updateForm.invalid" translate>Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

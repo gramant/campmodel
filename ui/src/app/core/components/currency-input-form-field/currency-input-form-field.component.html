@@ -1,0 +1,24 @@
+<ng-container *ngIf="settings && settings.maxLength">
+    <small>
+        <span translate>Maximum characters</span>:
+        {{settings.maxLength}}
+    </small>
+    <small class="ml-1"
+           [ngClass]="{'text-danger': control.invalid && control.errors.maxlength}">
+        <span translate>Characters left</span>:
+        {{getCharactersLeft()}}
+    </small>
+</ng-container>
+
+<input class="form-control" currencyMask [options]="{prefix: '', thousands:' ',precision: 0}" [(ngModel)]="value"
+       (ngModelChange)="onChangeValue($event)">
+<div class="invalid-feedback-non-form" *ngIf="control.invalid">
+    <ng-container *ngIf="control.touched">
+        <span class="text-danger" *ngIf="control.errors.required" translate>Required field</span>
+    </ng-container>
+
+    <ng-container>
+        <span class="text-danger" *ngIf="control.errors.maxlength"
+              translate>Maximum number of characters exceeded</span>
+    </ng-container>
+</div>

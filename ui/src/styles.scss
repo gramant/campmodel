@@ -1,0 +1,75 @@
+/* You can add global styles to this file, and also import other style files */
+//== Vendor
+@import '~@fortawesome/fontawesome-free/css/brands.css';
+@import '~@fortawesome/fontawesome-free/css/regular.css';
+@import '~@fortawesome/fontawesome-free/css/solid.css';
+@import '~@fortawesome/fontawesome-free/css/fontawesome.css';
+@import '~simple-line-icons/css/simple-line-icons.css';
+@import '~angular2-toaster/toaster.css';
+@import '~loaders.css/loaders.css';
+//== Bootstrap
+@import "./app/shared/styles/bootstrap.scss";
+//== Template
+@import "./app/template/inspinia/style";
+//== Components
+@import "./app/template/components/all.scss";
+
+@import '~ngx-bootstrap/datepicker/bs-datepicker.css';
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "~ngx-easy-table/style.scss";
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.flex-align-center {
+    display: flex;
+    align-items: center
+}
+
+.dropdown-menu {
+    right: 0 !important;
+    left: auto !important;
+}
+
+
+.ngx-menu {
+    //position: absolute;
+    //top: 100%;
+    //right: 0;
+    //left: auto;
+    padding-left: 0px;
+}
+
+.font-size-80p {
+    font-size: 80%;
+}
+
+.invalid-feedback-non-form{
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #dc3545;
+}
+
+.border-bottom-1 {
+    border-bottom: 1px solid #e4eaec;
+}
+
+.no-border {
+    border-style: none !important;
+}
+
+.no-border-tab.tab-container .tab-content {
+    padding: 0 !important;
+    border-style: none !important;
+}
+
+.no-padding-tab.tab-container .tab-content {
+    padding: 0 !important;
+}
+
+
+.no-border-radius{
+    border-radius: 0 !important;
+}

@@ -1,0 +1,15 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel" translate>Delete confirmation</h4>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close" (click)="close()">
+            <span>×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        {{message}}
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal" (click)="close()" translate>Cancel</button>
+        <button class="btn btn-danger" type="button" (click)="submitRequest()" translate>Confirm</button>
+    </div>
+</div>

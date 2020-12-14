@@ -1,0 +1,22 @@
+
+<input class="form-control"
+       [(ngModel)]="value"
+       (blur)="onTouched($event)"
+       (input)="onChangeValue($event)">
+
+<div class="invalid-feedback-non-form" *ngIf="control && control.invalid">
+    <ng-container *ngIf="control.touched && control.invalid">
+        <span class="text-danger" *ngIf="control.errors.required" translate>Required field</span>
+        <span class="text-danger" *ngIf="control.errors.email" translate>E-mail is invalid</span>
+    </ng-container>
+
+    <ng-container>
+        <span class="text-danger"
+              *ngIf="control.errors.exists"
+              >{{errorText}}</span>
+
+        <span class="text-danger" *ngIf="control.errors.maxlength"
+              translate>Maximum number of characters exceeded</span>
+    </ng-container>
+</div>
+

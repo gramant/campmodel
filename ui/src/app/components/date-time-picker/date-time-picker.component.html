@@ -1,0 +1,31 @@
+<div>
+    <div class="d-flex align-items-center">
+        <input type="text" class="form-control cursor-pointer mr-2" style="width: 15ch;"
+               bsDatepicker
+               [(ngModel)]="valueDate"
+               (ngModelChange)="onChangeValueDate($event)"
+               [minDate]="minDate"
+               [maxDate]="maxDate"
+               [bsConfig]="{containerClass: 'theme-blue', adaptivePosition: true, dateInputFormat: 'DD.MM.YYYY'}">
+
+
+        <timepicker [(ngModel)]="valueTime"
+                    [showMeridian]="false"
+                    (ngModelChange)="onChangeValueTime($event)"></timepicker>
+
+        <span class="ml-1">MSK</span>
+    </div>
+
+    <div>
+        <div class="invalid-feedback-non-form">
+            <span class="text-warning" *ngIf="isErrorMinDateWarning">{{minDateWarningMessage}}</span>
+            <span class="text-warning" *ngIf="isErrorMaxDateWarning">{{maxDateWarningMessage}}</span>
+            <ng-container *ngFor="let dateWithMessageValid of minDateWarningWithMessageValid; let i = index">
+                <div class="text-warning" *ngIf="!dateWithMessageValid.isValid">{{dateWithMessageValid.dateWithMessage.message}}</div>
+            </ng-container>
+            <ng-container *ngFor="let dateWithMessageValid of maxDateWarningWithMessageValid; let i = index">
+                <div class="text-warning" *ngIf="!dateWithMessageValid.isValid">{{dateWithMessageValid.dateWithMessage.message}}</div>
+            </ng-container>
+        </div>
+    </div>
+</div>

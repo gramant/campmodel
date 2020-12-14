@@ -1,0 +1,56 @@
+<!-- START Top Navbar-->
+<nav class="navbar topnavbar" role="navigation">
+    <!-- START navbar header-->
+    <div class="navbar-header pl-0">
+        <a class="navbar-brand" [routerLink]="getHomePath((currentUser$ | async))">
+            <div class="brand-logo text-left">
+                <img class="img-fluid" src="assets/img/logo.png" width="130px" alt="App Logo"/>
+            </div>
+        </a>
+    </div>
+    <!-- END navbar header-->
+    <ul class="navbar-nav mr-auto flex-row">
+        <li *ngIf="userHasRole((currentUser$ | async), Role.SUPPORT)"
+            class="nav-item user-name">
+            <a class="nav-link" [routerLink]="'/users'" [title]="'Users' | translate">
+                <i class="fa fa-users-cog fa-2x"></i>
+            </a>
+        </li>
+        <li *ngIf="userHasRole((currentUser$ | async), Role.ADMINISTRATOR)"
+            class="nav-item user-name">
+            <a class="nav-link" [routerLink]="'/funders'" [title]="'Funders' | translate">
+                <i class="fa fa-landmark fa-2x"></i>
+            </a>
+        </li>
+    </ul>
+    <!-- START Right Navbar-->
+    <div class="d-flex">
+        <ul class="navbar-nav flex-row">
+            <li *ngIf="(currentUser$ | async) as user" class="nav-item">
+                <a class="nav-link" title="Profile" *ngIf="!userHasRole(user, Role.APPLICANT)" [title]="'Account' | translate"
+                   [routerLink]="['/account/me']">
+                    {{user.name}}
+                </a>
+
+                <a class="nav-link" title="Profile" *ngIf="userHasRole(user, Role.APPLICANT)" [title]="'Account' | translate"
+                   [routerLink]="['/account/me']">
+                    {{ user.name }}
+                </a>
+            </li>
+<!--            <li class="nav-item flex-align-center">-->
+<!--                <a class="nav-link" [routerLink]="" (click)="switchLanguage.switchLanguage()">-->
+<!--                    <app-switch-language #switchLanguage></app-switch-language>-->
+<!--                </a>-->
+<!--            </li>-->
+            <li class="nav-item cursor-pointer" style="margin-top: 2px;">
+                <a class="nav-link" (click)="logout()" [title]="'Logout' | translate">
+                    <i class="fa icon-logout"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- END Right Navbar-->
+
+</nav>
+<!-- END Top Navbar-->
+

@@ -1,0 +1,50 @@
+<div class="content-heading">
+    <div>
+        <span translate>Users</span>
+        <ol class="breadcrumb breadcrumb px-0 pb-0">
+            <li class="breadcrumb-item active" translate>Manage users</li>
+        </ol>
+    </div>
+</div>
+
+<div class="card card-default">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-right">
+                    <button class="btn btn-primary m-2"
+                            (click)="openInviteSupportModal()" translate>New Administrator</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <app-spinner [show]="getSupportUsersRequestStat.isRequest">
+        <div class="card-body" *ngIf="getSupportUsersRequestStat.isRequestSuccess">
+            <div class="row">
+                <div class="col-12 ">
+                    <ngx-table [data]="users" [configuration]="configuration" [columns]="columns">
+                    </ngx-table>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center" *ngIf="getSupportUsersRequestStat.isRequestFailed">
+            <p class="text-danger">{{getSupportUsersRequestStat.error}}</p>
+        </div>
+    </app-spinner>
+
+</div>
+
+<ng-template #countryColumn let-row let-rowIndex="rowIndex" let-column="column">
+    <app-flag class="align-center" [country]="row.country"></app-flag>
+</ng-template>
+
+<ng-template #dateColumn let-row let-rowIndex="rowIndex" let-column="column">
+    <div>{{row.joinedOn | date:'dd.MM.yyyy'}}</div>
+</ng-template>
+
+<ng-template #roleColumn let-row let-rowIndex="rowIndex" let-column="column">
+    <div>{{getViewRoles(row)}}</div>
+</ng-template>
+
