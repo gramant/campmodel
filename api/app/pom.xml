@@ -142,7 +142,7 @@
 							<records>true</records>
 						</generate>
 						<target>
-							<packageName>com.gramant.campmodel.adapters.database.data</packageName>
+							<packageName>com.gramant.campmodel.data</packageName>
 							<directory>src/main/java</directory>
 						</target>
 					</generator>
