@@ -1,7 +1,7 @@
 package com.gramant.campmodel.controllers;
 
-import com.gramant.campmodel.domain.Сompany;
-import com.gramant.campmodel.domain.CreateCompanyRequest;
+import com.gramant.campmodel.domain.Campaign;
+import com.gramant.campmodel.domain.CreateCampaignRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/compeign")
 @AllArgsConstructor
 @Validated
-public class CompeignResource {
+public class CampaignResource {
 
     @PostMapping
-    public ResponseEntity<?> addFilter(@RequestBody CreateCompanyRequest req) {
+    public ResponseEntity<?> addFilter(@RequestBody CreateCampaignRequest req) {
 
-        Сompany newСompany = req.asCompeign();
+        Campaign newCampaign = req.asCompeign();
         return null;
     }
 
