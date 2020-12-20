@@ -4,7 +4,7 @@
 package com.gramant.campmodel.data;
 
 
-import com.gramant.campmodel.data.tables.Company;
+import com.gramant.campmodel.data.tables.Campaign;
 import com.gramant.campmodel.data.tables.Products;
 
 import java.util.Arrays;
@@ -29,9 +29,9 @@ public class DefaultSchema extends SchemaImpl {
     public static final DefaultSchema DEFAULT_SCHEMA = new DefaultSchema();
 
     /**
-     * The table <code>COMPANY</code>.
+     * The table <code>CAMPAIGN</code>.
      */
-    public final Company COMPANY = Company.COMPANY;
+    public final Campaign CAMPAIGN = Campaign.CAMPAIGN;
 
     /**
      * The table <code>PRODUCTS</code>.
@@ -54,7 +54,7 @@ public class DefaultSchema extends SchemaImpl {
     @Override
     public final List<Table<?>> getTables() {
         return Arrays.<Table<?>>asList(
-            Company.COMPANY,
+            Campaign.CAMPAIGN,
             Products.PRODUCTS);
     }
 }
