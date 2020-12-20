@@ -25,7 +25,6 @@ public class ProductResource {
     @PostMapping ()
     public ResponseEntity<?> addProduct(@RequestBody CreateProductRequest req) {
         Product newProduct = req.asProduct();
-        log.info("Product newProduct = req.asProduct --- " + newProduct);
         if (productRepository.getByName(req.getName()).isPresent()) {
             return ResponseEntity.unprocessableEntity().body("Product with name [" + req.getName() + "] already exists!");
         }

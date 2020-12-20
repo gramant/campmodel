@@ -6,11 +6,11 @@ import com.gramant.campmodel.data.tables.records.ProductsRecord;
 import com.gramant.campmodel.domain.Product;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.jooq.DSLContext;
-import org.jooq.Record;
+import org.jooq.*;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -33,9 +33,19 @@ public class ProductRepository {
         return record.map(ProductRepository::map);
     }
 
-    private static Product map(Record record) {
-        ProductsRecord productsRecord = record.into(PRODUCTS);
-        return new Product(new Product.ProductId(productsRecord.getCode()), productsRecord.getName());
+    @Transactional(readOnly = true)
+    public Optional<Product> getById(UUID code) {
+        Optional<Record> record = dsl
+                .select()
+                .from(PRODUCTS)
+                .where(PRODUCTS.CODE.eq(code))
+                .fetchOptional();
+        return record.map(ProductRepository::map);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Product> list() {
+        return dsl.select().from(PRODUCTS).fetch().map(ProductRepository::map);
     }
 
     @Transactional
@@ -43,6 +53,26 @@ public class ProductRepository {
         dsl.insertInto(PRODUCTS)
                 .set(ProductData.fromProduct(product).asRecord())
                 .execute();
+    }
+
+    @Transactional
+    public void update(Product product) {
+        dsl.update(PRODUCTS)
+                .set(ProductData.fromProduct(product).asRecord())
+                .where(PRODUCTS.CODE.eq(product.getProductId().getValue()))
+                .execute();
+    }
+
+    @Transactional
+    public void remove(Product.ProductId id) {
+        dsl.deleteFrom(PRODUCTS)
+                .where(PRODUCTS.CODE.eq(id.getValue()))
+                .execute();
+    }
+
+    public static Product map(Record record) {
+        ProductsRecord productsRecord = record.into(PRODUCTS);
+        return new Product(new Product.ProductId(productsRecord.getCode()), productsRecord.getName());
     }
 
     static class ProductData {
