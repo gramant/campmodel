@@ -11,6 +11,8 @@ import org.jooq.Record;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -75,6 +77,10 @@ public class CampaignRepository {
                 .set(CampaignRepository.CampaignData.fromCampaign(campaign).asRecord())
                 .where(CAMPAIGN.ID.eq(campaign.getId().getValue()))
                 .execute();
+    }
+
+    public List<Campaign> list() {
+        return dsl.select().from(CAMPAIGN).fetch().map(CampaignRepository::map);
     }
 
     static class CampaignData {

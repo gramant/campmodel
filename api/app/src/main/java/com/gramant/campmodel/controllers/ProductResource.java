@@ -11,10 +11,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/product")
+@RequestMapping("/api/products")
 @AllArgsConstructor
 @Validated
 @Slf4j
@@ -38,6 +40,11 @@ public class ProductResource {
         return productRepository.getById(id)
                 .map(product -> ResponseEntity.ok(ProductRepresentation.from(product)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/")
+    public List<ProductRepresentation> list() {
+        return productRepository.list().stream().map(ProductRepresentation::from).collect(Collectors.toList());
     }
 
     @DeleteMapping("/{id}")
