@@ -1,4 +1,4 @@
-package com.gramant.campmodel.data;
+package com.gramant.campmodel.repository.jooqConfig;
 
 import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.ObjectProvider;

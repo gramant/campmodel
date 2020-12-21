@@ -1,4 +1,4 @@
-package com.gramant.campmodel.data;
+package com.gramant.campmodel.repository.jooqConfig;
 
 import org.jooq.ConnectionProvider;
 import org.jooq.DSLContext;

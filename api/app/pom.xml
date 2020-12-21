@@ -137,6 +137,23 @@
 									<value>!test</value>
 								</property>
 							</properties>
+
+							<forcedTypes>
+								<forcedType>
+
+									<userType>com.gramant.campmodel.domain.Campaign.Calculation</userType>
+
+									<!-- Associate that custom type with your converter. -->
+									<converter>com.gramant.campmodel.repository.jooqConfig.StringToCalculationConverter</converter>
+
+									<!-- These are the same as for type rewriting -->
+									<includeExpression>.*\.calculation</includeExpression>
+									<includeTypes>.*</includeTypes>
+
+
+								</forcedType>
+							</forcedTypes>
+
 						</database>
 						<generate>
 							<records>true</records>

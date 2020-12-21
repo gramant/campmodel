@@ -7,6 +7,8 @@ package com.gramant.campmodel.data.tables;
 import com.gramant.campmodel.data.DefaultSchema;
 import com.gramant.campmodel.data.Keys;
 import com.gramant.campmodel.data.tables.records.CampaignRecord;
+import com.gramant.campmodel.domain.Campaign.Calculation;
+import com.gramant.campmodel.repository.jooqConfig.StringToCalculationConverter;
 
 import java.util.Arrays;
 import java.util.List;
@@ -66,7 +68,7 @@ public class Campaign extends TableImpl<CampaignRecord> {
     /**
      * The column <code>CAMPAIGN.CALCULATION</code>.
      */
-    public final TableField<CampaignRecord, String> CALCULATION = createField(DSL.name("CALCULATION"), SQLDataType.VARCHAR(50).nullable(false), this, "");
+    public final TableField<CampaignRecord, Calculation> CALCULATION = createField(DSL.name("CALCULATION"), SQLDataType.VARCHAR(50).nullable(false), this, "", new StringToCalculationConverter());
 
     /**
      * The column <code>CAMPAIGN.BUDGET</code>.
@@ -166,7 +168,7 @@ public class Campaign extends TableImpl<CampaignRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row6<UUID, String, UUID, String, Integer, Integer> fieldsRow() {
+    public Row6<UUID, String, UUID, Calculation, Integer, Integer> fieldsRow() {
         return (Row6) super.fieldsRow();
     }
 }

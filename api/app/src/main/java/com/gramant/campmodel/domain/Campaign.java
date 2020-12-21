@@ -1,7 +1,12 @@
 package com.gramant.campmodel.domain;
 
+import lombok.Getter;
+import lombok.ToString;
+
 import java.util.UUID;
 
+@Getter
+@ToString
 public class Campaign {
 
     private CampaignId id;
@@ -25,9 +30,10 @@ public class Campaign {
     }
 
     public enum Calculation {
-        ATTRIBUTION, ECONOMETRIC, MIXED;
+        ATTRIBUTION, ECONOMETRIC, MIXED
     }
 
+    @Getter
     public static class CampaignId {
         UUID value;
 
