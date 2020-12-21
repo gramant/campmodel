@@ -15,6 +15,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import static com.gramant.campmodel.data.tables.Campaign.CAMPAIGN;
+import static com.gramant.campmodel.data.tables.Products.PRODUCTS;
 
 @Repository
 @AllArgsConstructor
@@ -30,6 +31,23 @@ public class CampaignRepository {
                 .where(CAMPAIGN.ID.eq(id))
                 .fetchOptional();
         return record.map(CampaignRepository::map);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<Campaign> getByName(String name) {
+        Optional<Record> record = dsl
+                .select()
+                .from(CAMPAIGN)
+                .where(CAMPAIGN.NAME.eq(name))
+                .fetchOptional();
+        return record.map(CampaignRepository::map);
+    }
+
+    @Transactional
+    public void remove(UUID id) {
+        dsl.deleteFrom(CAMPAIGN)
+                .where(CAMPAIGN.ID.eq(id))
+                .execute();
     }
 
     @Transactional
@@ -51,6 +69,13 @@ public class CampaignRepository {
         );
     }
 
+    @Transactional
+    public void update(Campaign campaign) {
+        dsl.update(CAMPAIGN)
+                .set(CampaignRepository.CampaignData.fromCampaign(campaign).asRecord())
+                .where(CAMPAIGN.ID.eq(campaign.getId().getValue()))
+                .execute();
+    }
 
     static class CampaignData {
         private UUID id;
@@ -103,6 +128,4 @@ public class CampaignRepository {
                     .with(CAMPAIGN.WEEKS, weeks);
         }
     }
-
-
 }

@@ -64,9 +64,9 @@ public class ProductRepository {
     }
 
     @Transactional
-    public void remove(Product.ProductId id) {
+    public void remove(UUID id) {
         dsl.deleteFrom(PRODUCTS)
-                .where(PRODUCTS.CODE.eq(id.getValue()))
+                .where(PRODUCTS.CODE.eq(id))
                 .execute();
     }
 
