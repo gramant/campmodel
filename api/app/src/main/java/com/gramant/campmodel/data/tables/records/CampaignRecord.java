@@ -5,7 +5,7 @@ package com.gramant.campmodel.data.tables.records;
 
 
 import com.gramant.campmodel.data.tables.Campaign;
-import com.gramant.campmodel.domain.Campaign.Calculation;
+import com.gramant.campmodel.domain.Calculation;
 
 import java.util.UUID;
 

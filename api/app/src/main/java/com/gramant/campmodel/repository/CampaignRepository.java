@@ -1,12 +1,11 @@
 package com.gramant.campmodel.repository;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.gramant.campmodel.data.tables.records.CampaignRecord;
+import com.gramant.campmodel.domain.Calculation;
 import com.gramant.campmodel.domain.Campaign;
 import com.gramant.campmodel.domain.ids.CampaignId;
 import com.gramant.campmodel.domain.ids.ProductCode;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.springframework.stereotype.Repository;
@@ -19,7 +18,7 @@ import java.util.UUID;
 import static com.gramant.campmodel.data.tables.Campaign.CAMPAIGN;
 
 @Repository
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CampaignRepository {
 
     private final DSLContext dsl;
@@ -54,7 +53,7 @@ public class CampaignRepository {
     @Transactional
     public void add(Campaign campaign) {
         dsl.insertInto(CAMPAIGN)
-                .set(CampaignRepository.CampaignData.fromCampaign(campaign).asRecord())
+                .set(CampaignData.fromCampaign(campaign).asRecord())
                 .execute();
     }
 
@@ -73,7 +72,7 @@ public class CampaignRepository {
     @Transactional
     public void update(Campaign campaign) {
         dsl.update(CAMPAIGN)
-                .set(CampaignRepository.CampaignData.fromCampaign(campaign).asRecord())
+                .set(CampaignData.fromCampaign(campaign).asRecord())
                 .where(CAMPAIGN.ID.eq(campaign.getId().getValue()))
                 .execute();
     }
@@ -86,12 +85,12 @@ public class CampaignRepository {
         private final UUID id;
         private final String name;
         private final UUID productCode;
-        private final Campaign.Calculation calculationMethod;
+        private final Calculation calculationMethod;
         private final Integer budget;
         private final Integer weeks;
 
         CampaignData(UUID id, String name, UUID productCode,
-                     Campaign.Calculation calculationMethod,
+                     Calculation calculationMethod,
                      Integer budget, Integer weeks
         ){
             this.id = id;

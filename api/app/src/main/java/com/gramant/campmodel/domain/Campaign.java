@@ -5,8 +5,6 @@ import com.gramant.campmodel.domain.ids.ProductCode;
 import lombok.Getter;
 import lombok.ToString;
 
-import java.util.Optional;
-
 @Getter
 @ToString
 public class Campaign {
@@ -29,20 +27,6 @@ public class Campaign {
 
     public static Campaign newCampaign(String name, ProductCode productCode, Calculation calculationMethod, Integer budget, Integer weeks) {
         return new Campaign(CampaignId.newId(), name, productCode, calculationMethod, budget, weeks);
-    }
-
-    public enum Calculation {
-        ATTRIBUTION, ECONOMETRIC, MIXED
-    }
-
-    public static Optional<Calculation> getCalculationMethod(String method){
-        for (Calculation c : Calculation.values()) {
-            if (c.name().equals(method)) {
-                return Optional.of(c);
-            }
-        }
-
-        return Optional.empty();
     }
 
 }

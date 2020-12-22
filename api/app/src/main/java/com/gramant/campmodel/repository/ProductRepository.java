@@ -36,12 +36,12 @@ public class ProductRepository {
 
     @Transactional(readOnly = true)
     public Optional<Product> getById(ProductCode code) {
-        Optional<Record> record = dsl
+        return dsl
                 .select()
                 .from(PRODUCT)
                 .where(PRODUCT.CODE.eq(code.getValue()))
-                .fetchOptional();
-        return record.map(ProductRepository::map);
+                .fetchOptional()
+                .map(ProductRepository::map);
     }
 
     @Transactional(readOnly = true)
@@ -80,7 +80,7 @@ public class ProductRepository {
         private final UUID code;
         private final String name;
 
-        ProductData(UUID code, String name){
+        ProductData(UUID code, String name) {
             this.code = code;
             this.name = name;
         }

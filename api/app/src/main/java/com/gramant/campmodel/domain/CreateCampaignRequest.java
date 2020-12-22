@@ -28,7 +28,7 @@ public class CreateCampaignRequest {
     }
 
     public Campaign asCampaign() {
-        return Campaign.newCampaign(name, productCode, Campaign.Calculation.valueOf(calculationMethod), budget, weeks);
+        return Campaign.newCampaign(name, productCode, Calculation.valueOf(calculationMethod), budget, weeks);
     }
 
 }

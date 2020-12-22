@@ -7,7 +7,7 @@ package com.gramant.campmodel.data.tables;
 import com.gramant.campmodel.data.DefaultSchema;
 import com.gramant.campmodel.data.Keys;
 import com.gramant.campmodel.data.tables.records.CampaignRecord;
-import com.gramant.campmodel.domain.Campaign.Calculation;
+import com.gramant.campmodel.domain.Calculation;
 import com.gramant.campmodel.repository.jooqConfig.StringToCalculationConverter;
 
 import java.util.Arrays;

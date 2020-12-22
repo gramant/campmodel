@@ -1,17 +1,17 @@
 package com.gramant.campmodel.repository.jooqConfig;
 
-import com.gramant.campmodel.domain.Campaign;
+import com.gramant.campmodel.domain.Calculation;
 import org.jooq.Converter;
 
-public class StringToCalculationConverter implements Converter<String, Campaign.Calculation> {
+public class StringToCalculationConverter implements Converter<String, Calculation> {
 
     @Override
-    public Campaign.Calculation from(String databaseObject) {
-        return Campaign.Calculation.valueOf(databaseObject);
+    public Calculation from(String databaseObject) {
+        return Calculation.valueOf(databaseObject);
     }
 
     @Override
-    public String to(Campaign.Calculation userObject) {
+    public String to(Calculation userObject) {
         return String.valueOf(userObject);
     }
 
@@ -21,7 +21,7 @@ public class StringToCalculationConverter implements Converter<String, Campaign.
     }
 
     @Override
-    public Class<Campaign.Calculation> toType() {
-        return Campaign.Calculation.class;
+    public Class<Calculation> toType() {
+        return Calculation.class;
     }
 }

@@ -1,5 +1,6 @@
 package com.gramant.campmodel.controllers;
 
+import com.gramant.campmodel.domain.Calculation;
 import com.gramant.campmodel.domain.Campaign;
 import com.gramant.campmodel.domain.CreateCampaignRequest;
 import com.gramant.campmodel.domain.ids.CampaignId;
@@ -38,11 +39,6 @@ public class CampaignResource {
                     + req.getProductCode().getValue() + "] does not exist!");
         }
 
-        if (Campaign.getCalculationMethod(req.getCalculationMethod()).isEmpty()) {
-            return ResponseEntity.unprocessableEntity().body("Calculation method ["
-                    + req.getCalculationMethod() + "] is not provided!");
-        }
-
         campaignRepository.add(req.asCampaign());
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
@@ -64,13 +60,13 @@ public class CampaignResource {
         if (campaignRepository.getById(id).isPresent()) {
             campaignRepository.remove(id.getValue());
         }
+
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> replaceCampaign(@PathVariable("id") CampaignId id,
                                            @RequestBody CreateCampaignRequest req) {
-
         if (campaignRepository.getById(id).isEmpty()) {
             return ResponseEntity.unprocessableEntity().body("Campaign with id [" + id + "] does not exist!");
         }
@@ -79,14 +75,10 @@ public class CampaignResource {
             return ResponseEntity.unprocessableEntity().body("Product with code [" + req.getProductCode() + "] does not exist!");
         }
 
-        if (Campaign.getCalculationMethod(req.getCalculationMethod()).isEmpty()) {
-            return ResponseEntity.unprocessableEntity().body("Calculation method [" + req.getCalculationMethod() + "] is not provided!");
-        }
-
         Campaign campaign = new Campaign(
                 id,
                 req.getName(), req.getProductCode(),
-                Campaign.Calculation.valueOf(req.getCalculationMethod()),
+                Calculation.valueOf(req.getCalculationMethod()),
                 req.getBudget(),
                 req.getWeeks());
 
