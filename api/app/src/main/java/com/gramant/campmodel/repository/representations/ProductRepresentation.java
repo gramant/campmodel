@@ -12,7 +12,7 @@ public class ProductRepresentation {
 
     public static ProductRepresentation from(Product product){
         return new ProductRepresentation(
-                product.getProductId().getValue().toString(),
+                product.getCode().getValue().toString(),
                 product.getName()
         );
     }

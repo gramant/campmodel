@@ -5,9 +5,9 @@ package com.gramant.campmodel.data;
 
 
 import com.gramant.campmodel.data.tables.Campaign;
-import com.gramant.campmodel.data.tables.Products;
+import com.gramant.campmodel.data.tables.Product;
 import com.gramant.campmodel.data.tables.records.CampaignRecord;
-import com.gramant.campmodel.data.tables.records.ProductsRecord;
+import com.gramant.campmodel.data.tables.records.ProductRecord;
 
 import org.jooq.ForeignKey;
 import org.jooq.TableField;
@@ -27,15 +27,14 @@ public class Keys {
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
-    public static final UniqueKey<CampaignRecord> PK_COMPANY_ID = Internal.createUniqueKey(Campaign.CAMPAIGN, DSL.name("PK_COMPANY_ID"), new TableField[] { Campaign.CAMPAIGN.ID }, true);
-    public static final UniqueKey<CampaignRecord> PRODUCT_ID = Internal.createUniqueKey(Campaign.CAMPAIGN, DSL.name("PRODUCT_ID"), new TableField[] { Campaign.CAMPAIGN.PRODUCT_ID }, true);
-    public static final UniqueKey<CampaignRecord> UQ_COMPANY_NAME = Internal.createUniqueKey(Campaign.CAMPAIGN, DSL.name("UQ_COMPANY_NAME"), new TableField[] { Campaign.CAMPAIGN.NAME }, true);
-    public static final UniqueKey<ProductsRecord> PK_CODE = Internal.createUniqueKey(Products.PRODUCTS, DSL.name("PK_CODE"), new TableField[] { Products.PRODUCTS.CODE }, true);
-    public static final UniqueKey<ProductsRecord> UQ_PRODUCT_NAME = Internal.createUniqueKey(Products.PRODUCTS, DSL.name("UQ_PRODUCT_NAME"), new TableField[] { Products.PRODUCTS.NAME }, true);
+    public static final UniqueKey<CampaignRecord> PK_CAMPAIGN_ID = Internal.createUniqueKey(Campaign.CAMPAIGN, DSL.name("PK_CAMPAIGN_ID"), new TableField[] { Campaign.CAMPAIGN.ID }, true);
+    public static final UniqueKey<CampaignRecord> UQ_CAMPAIGN_NAME = Internal.createUniqueKey(Campaign.CAMPAIGN, DSL.name("UQ_CAMPAIGN_NAME"), new TableField[] { Campaign.CAMPAIGN.NAME }, true);
+    public static final UniqueKey<ProductRecord> PK_CODE = Internal.createUniqueKey(Product.PRODUCT, DSL.name("PK_CODE"), new TableField[] { Product.PRODUCT.CODE }, true);
+    public static final UniqueKey<ProductRecord> UQ_PRODUCT_NAME = Internal.createUniqueKey(Product.PRODUCT, DSL.name("UQ_PRODUCT_NAME"), new TableField[] { Product.PRODUCT.NAME }, true);
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
     // -------------------------------------------------------------------------
 
-    public static final ForeignKey<CampaignRecord, ProductsRecord> FK_COMPANY = Internal.createForeignKey(Campaign.CAMPAIGN, DSL.name("FK_COMPANY"), new TableField[] { Campaign.CAMPAIGN.PRODUCT_ID }, Keys.PK_CODE, new TableField[] { Products.PRODUCTS.CODE }, true);
+    public static final ForeignKey<CampaignRecord, ProductRecord> PRODUCT_CODE = Internal.createForeignKey(Campaign.CAMPAIGN, DSL.name("PRODUCT_CODE"), new TableField[] { Campaign.CAMPAIGN.PRODUCT_CODE }, Keys.PK_CODE, new TableField[] { Product.PRODUCT.CODE }, true);
 }

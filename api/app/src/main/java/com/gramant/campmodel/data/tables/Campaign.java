@@ -61,9 +61,9 @@ public class Campaign extends TableImpl<CampaignRecord> {
     public final TableField<CampaignRecord, String> NAME = createField(DSL.name("NAME"), SQLDataType.VARCHAR(100).nullable(false), this, "");
 
     /**
-     * The column <code>CAMPAIGN.PRODUCT_ID</code>.
+     * The column <code>CAMPAIGN.PRODUCT_CODE</code>.
      */
-    public final TableField<CampaignRecord, UUID> PRODUCT_ID = createField(DSL.name("PRODUCT_ID"), SQLDataType.UUID.nullable(false), this, "");
+    public final TableField<CampaignRecord, UUID> PRODUCT_CODE = createField(DSL.name("PRODUCT_CODE"), SQLDataType.UUID.nullable(false), this, "");
 
     /**
      * The column <code>CAMPAIGN.CALCULATION</code>.
@@ -120,21 +120,21 @@ public class Campaign extends TableImpl<CampaignRecord> {
 
     @Override
     public UniqueKey<CampaignRecord> getPrimaryKey() {
-        return Keys.PK_COMPANY_ID;
+        return Keys.PK_CAMPAIGN_ID;
     }
 
     @Override
     public List<UniqueKey<CampaignRecord>> getKeys() {
-        return Arrays.<UniqueKey<CampaignRecord>>asList(Keys.PK_COMPANY_ID, Keys.UQ_COMPANY_NAME, Keys.PRODUCT_ID);
+        return Arrays.<UniqueKey<CampaignRecord>>asList(Keys.PK_CAMPAIGN_ID, Keys.UQ_CAMPAIGN_NAME);
     }
 
     @Override
     public List<ForeignKey<CampaignRecord, ?>> getReferences() {
-        return Arrays.<ForeignKey<CampaignRecord, ?>>asList(Keys.FK_COMPANY);
+        return Arrays.<ForeignKey<CampaignRecord, ?>>asList(Keys.PRODUCT_CODE);
     }
 
-    public Products products() {
-        return new Products(this, Keys.FK_COMPANY);
+    public Product product() {
+        return new Product(this, Keys.PRODUCT_CODE);
     }
 
     @Override

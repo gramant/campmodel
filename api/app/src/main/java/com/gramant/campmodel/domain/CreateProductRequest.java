@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 public class CreateProductRequest {
 
-    private String name;
+    private final String name;
 
     @JsonCreator
     public CreateProductRequest(@JsonProperty("name") String name){

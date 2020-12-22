@@ -5,7 +5,7 @@ package com.gramant.campmodel.data;
 
 
 import com.gramant.campmodel.data.tables.Campaign;
-import com.gramant.campmodel.data.tables.Products;
+import com.gramant.campmodel.data.tables.Product;
 
 
 /**
@@ -20,7 +20,7 @@ public class Tables {
     public static final Campaign CAMPAIGN = Campaign.CAMPAIGN;
 
     /**
-     * The table <code>PRODUCTS</code>.
+     * The table <code>PRODUCT</code>.
      */
-    public static final Products PRODUCTS = Products.PRODUCTS;
+    public static final Product PRODUCT = Product.PRODUCT;
 }

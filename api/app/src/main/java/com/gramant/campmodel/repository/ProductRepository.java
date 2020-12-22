@@ -2,8 +2,9 @@ package com.gramant.campmodel.repository;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.gramant.campmodel.data.tables.records.ProductsRecord;
+import com.gramant.campmodel.data.tables.records.ProductRecord;
 import com.gramant.campmodel.domain.Product;
+import com.gramant.campmodel.domain.ids.ProductCode;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jooq.*;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static com.gramant.campmodel.data.tables.Products.PRODUCTS;
+import static com.gramant.campmodel.data.tables.Product.PRODUCT;
 
 @Repository
 @AllArgsConstructor
@@ -27,76 +28,75 @@ public class ProductRepository {
     public Optional<Product> getByName(String name) {
         Optional<Record> record = dsl
                 .select()
-                .from(PRODUCTS)
-                .where(PRODUCTS.NAME.eq(name))
+                .from(PRODUCT)
+                .where(PRODUCT.NAME.eq(name))
                 .fetchOptional();
         return record.map(ProductRepository::map);
     }
 
     @Transactional(readOnly = true)
-    public Optional<Product> getById(UUID code) {
+    public Optional<Product> getById(ProductCode code) {
         Optional<Record> record = dsl
                 .select()
-                .from(PRODUCTS)
-                .where(PRODUCTS.CODE.eq(code))
+                .from(PRODUCT)
+                .where(PRODUCT.CODE.eq(code.getValue()))
                 .fetchOptional();
         return record.map(ProductRepository::map);
     }
 
     @Transactional(readOnly = true)
     public List<Product> list() {
-        return dsl.select().from(PRODUCTS).fetch().map(ProductRepository::map);
+        return dsl.select().from(PRODUCT).fetch().map(ProductRepository::map);
     }
 
     @Transactional
     public void add(Product product) {
-        dsl.insertInto(PRODUCTS)
+        dsl.insertInto(PRODUCT)
                 .set(ProductData.fromProduct(product).asRecord())
                 .execute();
     }
 
     @Transactional
     public void update(Product product) {
-        dsl.update(PRODUCTS)
+        dsl.update(PRODUCT)
                 .set(ProductData.fromProduct(product).asRecord())
-                .where(PRODUCTS.CODE.eq(product.getProductId().getValue()))
+                .where(PRODUCT.CODE.eq(product.getCode().getValue()))
                 .execute();
     }
 
     @Transactional
-    public void remove(UUID id) {
-        dsl.deleteFrom(PRODUCTS)
-                .where(PRODUCTS.CODE.eq(id))
+    public void remove(ProductCode code) {
+        dsl.deleteFrom(PRODUCT)
+                .where(PRODUCT.CODE.eq(code.getValue()))
                 .execute();
     }
 
     public static Product map(Record record) {
-        ProductsRecord productsRecord = record.into(PRODUCTS);
-        return new Product(new Product.ProductId(productsRecord.getCode()), productsRecord.getName());
+        ProductRecord productsRecord = record.into(PRODUCT);
+        return new Product(new ProductCode(productsRecord.getCode()), productsRecord.getName());
     }
 
     static class ProductData {
         private final UUID code;
         private final String name;
 
-        @JsonCreator
-        ProductData(@JsonProperty("code") UUID code, @JsonProperty("name") String name){
+        ProductData(UUID code, String name){
             this.code = code;
             this.name = name;
         }
 
         public static ProductData fromProduct(Product product) {
-            return new ProductData(product.getProductId().getValue(), product.getName());
+            return new ProductData(product.getCode().getValue(), product.getName());
         }
 
         public Product asProduct() {
-            return new Product(new Product.ProductId(code), name);
+            return new Product(new ProductCode(code), name);
         }
 
-        public ProductsRecord asRecord() {
-            return new ProductsRecord()
-                    .with(PRODUCTS.CODE, code)
-                    .with(PRODUCTS.NAME, name);
+        public ProductRecord asRecord() {
+            return new ProductRecord()
+                    .with(PRODUCT.CODE, code)
+                    .with(PRODUCT.NAME, name);
         }
     }
 

@@ -12,7 +12,7 @@ public class CampaignRepresentation {
 
     private final String id;
     private final String name;
-    private final String productId;
+    private final String productCode;
     private final String calculationMethod;
     private final Integer budget;
     private final Integer weeks;
@@ -22,7 +22,7 @@ public class CampaignRepresentation {
         return new CampaignRepresentation(
                 campaign.getId().getValue().toString(),
                 campaign.getName(),
-                campaign.getProductId().getValue().toString(),
+                campaign.getProductCode().getValue().toString(),
                 campaign.getCalculationMethod().toString(),
                 campaign.getBudget(),
                 campaign.getWeeks()

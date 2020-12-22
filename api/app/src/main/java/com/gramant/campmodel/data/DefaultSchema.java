@@ -5,7 +5,7 @@ package com.gramant.campmodel.data;
 
 
 import com.gramant.campmodel.data.tables.Campaign;
-import com.gramant.campmodel.data.tables.Products;
+import com.gramant.campmodel.data.tables.Product;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,9 +34,9 @@ public class DefaultSchema extends SchemaImpl {
     public final Campaign CAMPAIGN = Campaign.CAMPAIGN;
 
     /**
-     * The table <code>PRODUCTS</code>.
+     * The table <code>PRODUCT</code>.
      */
-    public final Products PRODUCTS = Products.PRODUCTS;
+    public final Product PRODUCT = Product.PRODUCT;
 
     /**
      * No further instances allowed
@@ -55,6 +55,6 @@ public class DefaultSchema extends SchemaImpl {
     public final List<Table<?>> getTables() {
         return Arrays.<Table<?>>asList(
             Campaign.CAMPAIGN,
-            Products.PRODUCTS);
+            Product.PRODUCT);
     }
 }

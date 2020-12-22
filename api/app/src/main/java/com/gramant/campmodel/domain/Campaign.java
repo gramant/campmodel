@@ -1,53 +1,49 @@
 package com.gramant.campmodel.domain;
 
+import com.gramant.campmodel.domain.ids.CampaignId;
+import com.gramant.campmodel.domain.ids.ProductCode;
 import lombok.Getter;
 import lombok.ToString;
 
-import java.util.UUID;
+import java.util.Optional;
 
 @Getter
 @ToString
 public class Campaign {
 
-    private CampaignId id;
-    private String name;
-    private Product.ProductId productId;
-    private Calculation calculationMethod;
-    private Integer budget;
-    private Integer weeks;
+    private final CampaignId id;
+    private final String name;
+    private final ProductCode productCode;
+    private final Calculation calculationMethod;
+    private final Integer budget;
+    private final Integer weeks;
 
-    public Campaign(CampaignId id, String name, Product.ProductId productId, Calculation calculationMethod, Integer budget, Integer weeks) {
+    public Campaign(CampaignId id, String name, ProductCode productCode, Calculation calculationMethod, Integer budget, Integer weeks) {
         this.id = id;
         this.name = name;
-        this.productId = productId;
+        this.productCode = productCode;
         this.calculationMethod = calculationMethod;
         this.budget = budget;
         this.weeks = weeks;
     }
 
-    public static Campaign newCompeign(String name, Product.ProductId productId, Calculation calculationMethod, Integer budget, Integer weeks) {
-        return new Campaign(CampaignId.newId(), name, productId, calculationMethod, budget, weeks);
+    public static Campaign newCampaign(String name, ProductCode productCode, Calculation calculationMethod, Integer budget, Integer weeks) {
+        return new Campaign(CampaignId.newId(), name, productCode, calculationMethod, budget, weeks);
     }
 
     public enum Calculation {
         ATTRIBUTION, ECONOMETRIC, MIXED
     }
 
-    @Getter
-    public static class CampaignId {
-        UUID value;
-
-        public CampaignId(String value) {
-            this(UUID.fromString(value));
+    public static Optional<Calculation> getCalculationMethod(String method){
+        for (Calculation c : Calculation.values()) {
+            if (c.name().equals(method)) {
+                return Optional.of(c);
+            }
         }
 
-        public CampaignId(UUID value) {
-            this.value = value;
-        }
-
-        public static CampaignId newId() {
-            return new CampaignId(UUID.randomUUID());
-        }
+        return Optional.empty();
     }
+
 }
 

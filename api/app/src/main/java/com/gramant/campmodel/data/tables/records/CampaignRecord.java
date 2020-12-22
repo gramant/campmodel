@@ -53,16 +53,16 @@ public class CampaignRecord extends UpdatableRecordImpl<CampaignRecord> implemen
     }
 
     /**
-     * Setter for <code>CAMPAIGN.PRODUCT_ID</code>.
+     * Setter for <code>CAMPAIGN.PRODUCT_CODE</code>.
      */
-    public void setProductId(UUID value) {
+    public void setProductCode(UUID value) {
         set(2, value);
     }
 
     /**
-     * Getter for <code>CAMPAIGN.PRODUCT_ID</code>.
+     * Getter for <code>CAMPAIGN.PRODUCT_CODE</code>.
      */
-    public UUID getProductId() {
+    public UUID getProductCode() {
         return (UUID) get(2);
     }
 
@@ -143,7 +143,7 @@ public class CampaignRecord extends UpdatableRecordImpl<CampaignRecord> implemen
 
     @Override
     public Field<UUID> field3() {
-        return Campaign.CAMPAIGN.PRODUCT_ID;
+        return Campaign.CAMPAIGN.PRODUCT_CODE;
     }
 
     @Override
@@ -173,7 +173,7 @@ public class CampaignRecord extends UpdatableRecordImpl<CampaignRecord> implemen
 
     @Override
     public UUID component3() {
-        return getProductId();
+        return getProductCode();
     }
 
     @Override
@@ -203,7 +203,7 @@ public class CampaignRecord extends UpdatableRecordImpl<CampaignRecord> implemen
 
     @Override
     public UUID value3() {
-        return getProductId();
+        return getProductCode();
     }
 
     @Override
@@ -235,7 +235,7 @@ public class CampaignRecord extends UpdatableRecordImpl<CampaignRecord> implemen
 
     @Override
     public CampaignRecord value3(UUID value) {
-        setProductId(value);
+        setProductCode(value);
         return this;
     }
 
@@ -282,12 +282,12 @@ public class CampaignRecord extends UpdatableRecordImpl<CampaignRecord> implemen
     /**
      * Create a detached, initialised CampaignRecord
      */
-    public CampaignRecord(UUID id, String name, UUID productId, Calculation calculation, Integer budget, Integer weeks) {
+    public CampaignRecord(UUID id, String name, UUID productCode, Calculation calculation, Integer budget, Integer weeks) {
         super(Campaign.CAMPAIGN);
 
         setId(id);
         setName(name);
-        setProductId(productId);
+        setProductCode(productCode);
         setCalculation(calculation);
         setBudget(budget);
         setWeeks(weeks);
