@@ -4,10 +4,9 @@ export class Campaign {
     id: CampaignId;
     name: string;
     productCode: ProductCode;
-    calculation: Calculation;
+    calculationMethod: Calculation;
     budget: number;
     weeks: number;
-
 }
 
 export type CampaignId = string;
@@ -15,4 +14,3 @@ export type CampaignId = string;
 export enum Calculation {
     ATTRIBUTION = 'ATTRIBUTION', ECONOMETRIC = 'ECONOMETRIC', MIXED = 'MIXED'
 }
-

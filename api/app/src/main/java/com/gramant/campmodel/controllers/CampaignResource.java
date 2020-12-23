@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 
 @RestController
-@RequestMapping("/api/campaign")
+@RequestMapping("/api/campaigns")
 @AllArgsConstructor
 @Slf4j
 public class CampaignResource {
