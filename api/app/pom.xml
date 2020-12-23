@@ -141,7 +141,7 @@
 							<forcedTypes>
 								<forcedType>
 
-									<userType>com.gramant.campmodel.domain.Campaign.Calculation</userType>
+									<userType>com.gramant.campmodel.domain.Calculation</userType>
 
 									<!-- Associate that custom type with your converter. -->
 									<converter>com.gramant.campmodel.repository.jooqConfig.StringToCalculationConverter</converter>
