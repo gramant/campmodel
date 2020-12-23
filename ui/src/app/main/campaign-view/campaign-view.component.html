@@ -47,33 +47,27 @@
 
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
-            <div class="col-lg-4">
+            <div *ngFor="let campaign of campaigns" class="col-lg-4">
                 <div class="ibox ">
                     <div class="ibox-content">
-                        <h2>TODO Small version</h2>
-                        <small>This is example of small version of todo list</small>
+                        <h2>{{ campaign.name }}</h2>
+<!--                        <small>This is example of small version of todo list</small>-->
                         <ul class="todo-list m-t small-list ui-sortable">
                             <li>
-                                <a href="#" class="check-link"><i class="fa fa-check-square"></i> </a>
-                                <span class="m-l-xs todo-completed">Buy a milk</span>
-
-                            </li>
-                            <li>
-                                <a href="#" class="check-link"><i class="fa fa-check-square"></i> </a>
-                                <span class="m-l-xs  todo-completed">Go to shop and find some products.</span>
-
+                                <a href="#" class="check-link"><i class="fa fa-square-o"></i> </a>
+                                <span class="m-l-xs">Product id:  {{ campaign.productCode }}</span>
                             </li>
                             <li>
                                 <a href="#" class="check-link"><i class="fa fa-square-o"></i> </a>
-                                <span class="m-l-xs">Send documents to Mike</span>
+                                <span class="m-l-xs">Calculation:  {{ campaign.calculationMethod }}</span>
                             </li>
                             <li>
                                 <a href="#" class="check-link"><i class="fa fa-square-o"></i> </a>
-                                <span class="m-l-xs">Go to the doctor dr Smith</span>
+                                <span class="m-l-xs">Budget:  {{ campaign.budget }}</span>
                             </li>
                             <li>
                                 <a href="#" class="check-link"><i class="fa fa-square-o"></i> </a>
-                                <span class="m-l-xs">Plan vacation</span>
+                                <span class="m-l-xs">Weeks:  {{ campaign.weeks }}</span>
                             </li>
                         </ul>
                     </div>
