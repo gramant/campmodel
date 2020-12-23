@@ -12,36 +12,37 @@ import {SupportGuard} from '../guards/support.guard';
 import {SupportUsersBoardComponent} from '../main/users/support-users-board/support-users-board.component';
 import {AccountRedirectComponent} from '../main/users/account-redirect/account-redirect.component';
 import {SinglePageLayoutComponent} from '../layout/single-page-layout/single-page-layout.component';
+import {CampaignViewComponent} from "../main/campaign-view/campaign-view.component";
 
 export const routes: Route [] = [
-        {
-            path: '',
-            component: SinglePageLayoutComponent,
-            children: [
-                {path: 'login', component: LoginComponent},
-                {path: 'registration', component: RegistrationComponent},
-                {path: 'confirm-email/:token', component: ConfirmEmailComponent},
-                {path: 'password', component: RecoverPasswordComponent},
-                {path: 'password/:token', component: RestorePasswordComponent},
-            ]
-        },
+        // {
+        //     path: '',
+        //     component: SinglePageLayoutComponent,
+        //     children: [
+        //         {path: 'login', component: LoginComponent},
+        //         {path: 'registration', component: RegistrationComponent},
+        //         {path: 'confirm-email/:token', component: ConfirmEmailComponent},
+        //         {path: 'password', component: RecoverPasswordComponent},
+        //         {path: 'password/:token', component: RestorePasswordComponent},
+        //     ]
+        // },
 
         {
             path: '',
             component: LayoutComponent,
-            canActivate: [AccountGuard],
-            canActivateChild: [AccountGuard],
+            // canActivate: [AccountGuard],
+            // canActivateChild: [AccountGuard],
             children: [
 
-                {path: 'account/me', component: AccountRedirectComponent},
+                {path: 'campaigns', component: CampaignViewComponent},
 
-                {
-                    path: '',
-                    canActivateChild: [SupportGuard],
-                    children: [
-                        {path: 'users', component: SupportUsersBoardComponent},
-                    ]
-                },
+                // {
+                //     path: '',
+                //     canActivateChild: [SupportGuard],
+                //     children: [
+                //         {path: 'users', component: SupportUsersBoardComponent},
+                //     ]
+                // },
             ]
         },
 

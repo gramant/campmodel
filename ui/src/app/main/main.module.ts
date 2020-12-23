@@ -18,6 +18,7 @@ import {AccountComponent} from './users/account-redirect/account/account.compone
 import {AccountApplicantComponent} from './users/account-redirect/account-applicant/account-applicant.component';
 import {AccountRedirectComponent} from './users/account-redirect/account-redirect.component';
 import {UpdateAccountModalComponent} from './users/account-redirect/account/update-accaunt-modal/update-account-modal.component';
+import { CampaignViewComponent } from './campaign-view/campaign-view.component';
 
 @NgModule({
     imports: [
@@ -46,6 +47,7 @@ import {UpdateAccountModalComponent} from './users/account-redirect/account/upda
         AccountComponent,
         AccountRedirectComponent,
         UpdateAccountModalComponent,
+        CampaignViewComponent,
 
     ]
 })
